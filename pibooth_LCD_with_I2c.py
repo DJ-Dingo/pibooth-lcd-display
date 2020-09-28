@@ -16,18 +16,21 @@ def write_date(app):
     """
     app.lcd.cursor_pos = (1, 0)
     app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+    
+def write_photo_count(app):
+    """Method called to write the date on the screen
+    """
+    app.lcd.cursor_pos = (0, 0)
+    app.lcd.write_string('Today Photos %s' % app.count.taken)
 
 @pibooth.hookimpl
 def pibooth_startup(app):
     app.lcd = CharLCD('PCF8574', 0x3F)
    # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
     app.lcd.clear()
-
     # Re-write the number of taken pictures each time pibooth
     # startup.
-    app.lcd.cursor_pos = (0, 0)
-    app.lcd.write_string('Today Photos %s' % app.count.taken)
-
+    write_photo_count(app)
     # Re-Write the date at pibooth startup
     write_date(app)
 
@@ -35,11 +38,8 @@ def pibooth_startup(app):
 def state_wait_enter(app):
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
-
     app.lcd.clear()
-
-    app.lcd.cursor_pos = (0, 0)
-    app.lcd.write_string('Today Photos %s' % app.count.taken)
+    write_photo_count(app)
 
     # Re-Write the date at pibooth startup
     # enter in 'wait' state.
