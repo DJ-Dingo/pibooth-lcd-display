@@ -1,6 +1,11 @@
-# Pibooth-LCD-with-I2c
-LCD-Plugin for Pibooth, to show Date/Time and numbers of photo taken, on a 16x2 LCD screen connected Through I2c.
+# pibooth-lcd-i2c
 
+ pibooth-lcd-i2c is a plugin for the pibooth https://pypi.org/project/pibooth application.
+
+It adds an 16x2 (HD44780) lcd screen to show numbers of photos taken, and Date/Time - connected Through I2c.
+ 
+
+--------------------------------------------------------------------------------------
 This version is for now setup to use port expander - PCF8574
 Supported port expanders are the (PCF8574 -Default), the MCP23008 and the MCP23017.
 
