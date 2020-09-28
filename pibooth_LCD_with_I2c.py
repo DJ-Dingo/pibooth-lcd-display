@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 """Plugin to handle small LCD display."""
 
 import time
