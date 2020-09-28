@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+
+"""Plugin to handle small LCD display."""
+
+import time
+import datetime
+import pibooth
+from RPLCD.i2c import CharLCD
+
+
+__version__ = "1.0.1"
+
+@pibooth.hookimpl
+def pibooth_startup(app):
+    app.lcd = CharLCD('PCF8574', 0x3F)
+   # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
+    app.lcd.clear()
+    app.lcd.clear()
+    app.lcd.clear()
+
+    # Re-write the number of taken pictures each time pibooth
+    # startup.
+    app.lcd.cursor_pos = (0, 0)
+    app.lcd.write_string('Today Photos %s' % app.count.taken)
+
+    # Re-Write the date at pibooth startup
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_wait_enter(app):
+    # Re-write the number of taken pictures each time pibooth
+    # enter in 'wait' state.
+
+    app.lcd.clear()
+    app.lcd.clear()
+    app.lcd.clear()
+
+    app.lcd.cursor_pos = (0, 0)
+    app.lcd.write_string('Today Photos %s' % app.count.taken)
+
+    # Re-Write the date at pibooth startup
+    # enter in 'wait' state.
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_wait_do(app):
+    # Re-Write the date at 'wait' do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_choose_do(app):
+    # Re-Write the date at chose do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_chosen_do(app):
+    # Re-Write the date at chosen do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_preview_do(app):
+    # Re-Write the date at preview_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_capture_do(app):
+    # Re-Write the date at capture_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_processing_do(app):
+    # Re-Write the date at processing_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_print_do(app):
+    # Re-Write the date at print_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_finish_do(app):
+    # Re-Write the date at finish_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+@pibooth.hookimpl
+def state_failsafe_do(app):
+    # Re-Write the date at failsafe_do
+    app.lcd.cursor_pos = (1, 0)
+    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+
+
+@pibooth.hookimpl
+def pibooth_cleanup(app):
+#    app.lcd.clear()
+    app.lcd.close(clear=True)
