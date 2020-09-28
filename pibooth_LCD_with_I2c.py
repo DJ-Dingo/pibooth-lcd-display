@@ -14,14 +14,20 @@ __version__ = "1.0.1"
 def write_date(app):
     """Method called to write the date on the screen
     """
-    app.lcd.cursor_pos = (1, 0)
-    app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+    try:
+        app.lcd.cursor_pos = (1, 0)
+        app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+    except OSError:
+        pass
     
 def write_photo_count(app):
     """Method called to write the date on the screen
     """
-    app.lcd.cursor_pos = (0, 0)
-    app.lcd.write_string('Today Photos %s' % app.count.taken)
+    try:
+        app.lcd.cursor_pos = (0, 0)
+        app.lcd.write_string('Today Photos %s' % app.count.taken)
+    except OSError:
+        pass
 
 @pibooth.hookimpl
 def pibooth_startup(app):
@@ -38,11 +44,8 @@ def pibooth_startup(app):
 def state_wait_enter(app):
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
-    app.lcd.clear()
     write_photo_count(app)
-
-    # Re-Write the date at pibooth startup
-    # enter in 'wait' state.
+    # Re-Write the date each time piboot enters in 'wait' state.
     write_date(app)
 
 @pibooth.hookimpl
