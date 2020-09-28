@@ -21,9 +21,10 @@ def write_date(app):
         pass
     
 def write_photo_count(app):
-    """Method called to write the date on the screen
+    """Method called to clear LCD and write the date on the screen
     """
     try:
+        app.lcd.clear()
         app.lcd.cursor_pos = (0, 0)
         app.lcd.write_string('Today Photos %s' % app.count.taken)
     except OSError:
@@ -32,8 +33,7 @@ def write_photo_count(app):
 @pibooth.hookimpl
 def pibooth_startup(app):
     app.lcd = CharLCD('PCF8574', 0x3F)
-   # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
-    app.lcd.clear()
+    # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
     # Re-write the number of taken pictures each time pibooth
     # startup.
     write_photo_count(app)
