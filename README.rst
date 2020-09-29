@@ -9,7 +9,7 @@ pibooth-lcd-i2c
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/lcd.png
    :align: center
-   :alt: Electronic sketch
+   :alt: LCD screen
 
 
 It adds an 16x2 (HD44780) lcd screen to show numbers of photos taken, and Date/Time - connected Through I2c.
@@ -29,6 +29,13 @@ Install
 
 Configuration
 -------------
+
+You need to know the address of your LCD. You can find it on the command line using the sudo i2cdetect 1 command (or sudo i2cdetect 0 on the original Raspberry Pi). In my case the address of the display was 0x3F. You also need to provide the name of the I²C port expander that your board uses. It should be written on the microchip that’s soldered on to your board. Supported port expanders are the PCF8574, the MCP23008 and the MCP23017.
+
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/i2c.png
+   :align: center
+   :alt: I2C on the back of LCD
+
 
 
 States description
