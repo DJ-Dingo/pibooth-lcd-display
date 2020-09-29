@@ -50,13 +50,15 @@ Circuit diagram
 
 Wiring
 ------
-When using a port expander, you need to use 5v. You should use a I2C-safe Bi-directional Logic Level Converter so you don't fryed your pi
+When using a port expander on your LCD, you use 5v. You should use a I2C-safe Bi-directional Logic Level Converter so you don't fryed your pi
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/4-channel-I2C-safe-Bi-directional-Logic-Level-Converter.png
    :align: center
    :alt: 4-channel I2C-safe Bi-directional Logic Level Converter
 
-First, connect the pins on the right with the Raspberry Pi (**BOARD numbering scheme**):
+
+
+Connection used to connect your port expander on the Raspberry Pi (**BOARD numbering scheme**):
 
 - GND: Pin 6 (GND)
 - VCC: Pin 4 (5V)
