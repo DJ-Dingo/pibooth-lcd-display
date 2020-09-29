@@ -7,7 +7,7 @@ pibooth-lcd-i2c
 
 ``pibooth-lcd-i2c`` is a plugin for the `pibooth`_ application.
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/LCD.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/lcd.png
    :align: center
    :alt: Electronic sketch
 
