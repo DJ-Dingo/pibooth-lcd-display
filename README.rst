@@ -41,6 +41,13 @@ Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP2301
 The board on this photo has a **PCF8574** port expander chip on it. There are also boards with other chips, e.g. the Adafruit I²C/SPI LCD Backpack which uses an **MCP23008** port expander. And the **MCP23017**
 
 
+States description
+------------------
+
+ 
+
+Circuit diagram
+---------------
 
 Wiring
 ------
@@ -52,13 +59,6 @@ First, connect the pins on the right with the Raspberry Pi:
 - SCL: Pin 5 (SCL)
 
 
-States description
-------------------
-
- 
-
-Circuit diagram
----------------
 
 
 .. --- Links ------------------------------------------------------------------
