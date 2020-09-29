@@ -20,7 +20,7 @@ Port Expander and Address app.lcd = CharLCD('PCF8574', 0x3F)
 I2c port address (**Default 0x27**) But here it is set up with my I2c Address = **0x3F**
 
 Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD app.lcd.write_string('Today Photos %s' % app.count.taken)
-
+ 
 
 Install
 -------
