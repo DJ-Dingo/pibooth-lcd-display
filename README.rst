@@ -30,7 +30,7 @@ Install
 Configuration
 -------------
 
-You need to know the address of your LCD. You can find it on the command line using the sudo i2cdetect 1 command (or sudo i2cdetect 0 on the original Raspberry Pi). In my case the address of the display was **0x3F**. You also need to provide the name of the I²C port expander that your board uses. It should be written on the microchip that’s soldered on to your board. 
+You need to know the address of your LCD. You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi). In my case the address of the display was **0x3F**. You also need to provide the name of the I²C port expander that your board uses. It should be written on the microchip that’s soldered on to your board. 
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/i2c.png
