@@ -15,7 +15,7 @@ pibooth-lcd-i2c
 It adds an 16x2 Hitachi HD44780 controller lcd screen, to show numbers of photos taken and Date/Time - connected Through I2c.
 
 This version is setup to use port expander - **PCF8574**
- Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**.
+Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**.
 Port Expander and Address app.lcd = CharLCD('PCF8574', 0x3F)
 
 I2c port address (**Default 0x27**) But here it is set up with my I2c Address = **0x3F**
