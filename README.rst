@@ -51,7 +51,7 @@ Circuit diagram
 
 Wiring
 ------
-First, connect the pins on the right with the Raspberry Pi:
+First, connect the pins on the right with the Raspberry Pi (**BOARD numbering scheme**):
 
 - GND: Pin 6 (GND)
 - VCC: Pin 4 (5V)
