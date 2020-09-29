@@ -36,6 +36,15 @@ You need to know the address of your LCD. You can find it on the command line us
    :align: center
    :alt: I2C on the back of LCD
 
+The board on this photo has a PCF8574 port expander chip on it. There are also boards with other chips, e.g. the Adafruit I²C/SPI LCD Backpack which uses an MCP23008 port expander. And the MCP23017
+
+First, connect the pins on the right with the Raspberry Pi:
+
+GND: Pin 6 (GND)
+VCC: Pin 4 (5V)
+SDA: Pin 3 (SDA)
+SCL: Pin 5 (SCL)
+
 
 
 States description
