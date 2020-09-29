@@ -50,7 +50,7 @@ Circuit diagram
 
 Wiring
 ------
-When using a port expander, you need to use 5v. You should use a I2C-safe Bi-directional Logic Level Converter so you don't fry your pi
+When using a port expander, you need to use 5v. You should use a I2C-safe Bi-directional Logic Level Converter so you don't fryed your pi
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/4-channel-I2C-safe-Bi-directional-Logic-Level-Converter.png
    :align: center
