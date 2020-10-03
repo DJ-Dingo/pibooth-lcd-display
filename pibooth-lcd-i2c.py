@@ -9,7 +9,7 @@ import pibooth
 from RPLCD.i2c import CharLCD
 
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 def write_date(app):
     """Method called to write the date on the screen
@@ -95,4 +95,8 @@ def state_failsafe_do(app):
 
 @pibooth.hookimpl
 def pibooth_cleanup(app):
+    # Turn off backlight when pibooth close, close lcd screen
+    # """ This could be an option as it can be nice to see what time pibooth was shut down
+    #     as it stops time and still shows the last time pibooth has been running """
+    app.lcd = CharLCD('PCF8574', 0x3F, backlight_enabled=False)
     app.lcd.close(clear=True)
