@@ -98,8 +98,9 @@ def pibooth_cleanup(app):
     # Turn off backlight when pibooth close, close lcd screen
     # """ This could be an option as it can be nice to see what time pibooth was shut down
     #     as it stops time and still shows the last time pibooth has been running """
-    try:
-        app.lcd.backlight_enabled=False
-        app.lcd.close(clear=True)
-    except OSError:
-        pass
+    if hasattr(app, 'lcd'):
+        try:
+            app.lcd.backlight_enabled=False
+            app.lcd.close(clear=True)
+        except OSError:
+            pass
