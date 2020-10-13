@@ -9,30 +9,43 @@ import pibooth
 from RPLCD.i2c import CharLCD
 
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 def write_date(app):
     """Method called to write the date on the screen
     """
-    try:
-        app.lcd.cursor_pos = (1, 0)
-        app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
-    except OSError:
-        pass
+    if hasattr(app, 'lcd'):
+        try:
+            app.lcd.cursor_pos = (1, 0)
+            app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+        except OSError:
+            pass
     
 def write_photo_count(app):
     """Method called to clear LCD and write the date on the screen
     """
+    if hasattr(app, 'lcd'):
+        try:
+            app.lcd.clear()
+            app.lcd.cursor_pos = (0, 0)
+            app.lcd.write_string('Today Photos %s' % app.count.taken)
+        except OSError:
+            pass
+        
+
+def i2c(app):
+    """I2c connect to lcd
+    """
     try:
-        app.lcd.clear()
-        app.lcd.cursor_pos = (0, 0)
-        app.lcd.write_string('Today Photos %s' % app.count.taken)
+        app.lcd = CharLCD('PCF8574', 0x3F, backlight_enabled=True)
     except OSError:
         pass
-
+        
+        
 @pibooth.hookimpl
 def pibooth_startup(app):
-    app.lcd = CharLCD('PCF8574', 0x3F)
+    i2c(app)
+    #app.lcd = CharLCD('PCF8574', 0x3F)
     # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
     # Re-write the number of taken pictures each time pibooth
     # startup.
@@ -42,6 +55,7 @@ def pibooth_startup(app):
 
 @pibooth.hookimpl
 def state_wait_enter(app):
+    i2c(app)
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
     write_photo_count(app)
@@ -98,5 +112,9 @@ def pibooth_cleanup(app):
     # Turn off backlight when pibooth close, close lcd screen
     # """ This could be an option as it can be nice to see what time pibooth was shut down
     #     as it stops time and still shows the last time pibooth has been running """
-    app.lcd = CharLCD('PCF8574', 0x3F, backlight_enabled=False)
-    app.lcd.close(clear=True)
+    if hasattr(app, 'lcd'):
+        try:
+            app.lcd.backlight_enabled=False
+            app.lcd.close(clear=True)
+        except OSError:
+            pass
