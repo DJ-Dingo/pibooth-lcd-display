@@ -45,8 +45,7 @@ def i2c(app):
 @pibooth.hookimpl
 def pibooth_startup(app):
     i2c(app)
-    #app.lcd = CharLCD('PCF8574', 0x3F)
-    # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
+    # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=True)
     # Re-write the number of taken pictures each time pibooth
     # startup.
     write_photo_count(app)
