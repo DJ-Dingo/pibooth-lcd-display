@@ -41,7 +41,7 @@ You need to know the address of your LCD.  :raw-html:`<br />`
 You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi).  :raw-html:`<br />` 
 In this case the address of the display was **0x3F**.  :raw-html:`<br />`
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/iic-address.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
    :align: center
    :alt: I2C Address
 
