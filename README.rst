@@ -37,7 +37,7 @@ Configuration
 
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You also need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
+You need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
 It should be written on the microchip that’s soldered on to your I2c board. :raw-html:`<br />`  
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
 
