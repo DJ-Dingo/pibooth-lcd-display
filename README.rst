@@ -22,7 +22,7 @@ Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and t
   -- Text "Today Photos" Max 12 with a 16x2 LCD :raw-html:`<br />`
      ``app.lcd.write_string('Today Photos %s' % app.count.taken)``  :raw-html:`<br />`
 
-**-- Date/Clock**
+  **-- Date/Clock**
 
 .. contents::
 
