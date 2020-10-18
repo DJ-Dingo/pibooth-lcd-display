@@ -36,7 +36,6 @@ Configuration
 -------------
 
 
-
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
@@ -69,7 +68,7 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 
 States description
 ------------------
-
+Missing Picture
  
 
 Circuit diagram
