@@ -91,7 +91,7 @@ Since the Raspberry Pi GPIO only handle 3.3v, it will Therefore be a good idea t
 
 
 How to connect your Level Converter and port expander on the Raspberry Pi (**BOARD numbering scheme**) :raw-html:`<br />`
-------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Connect the I2c to HV (High Level) on the Level Converter
 - GND: Pin GND (GND)
 - VCC: Pin HV  (5V) - Also connect 5v from the raspberry Pi Pin 2, to HV
