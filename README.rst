@@ -82,21 +82,27 @@ Here is the diagram for hardware connections.
 
 Wiring
 ------
-When using a port expander on your LCD, you will have to use 5v. Since the Raspberry Pi GPIO only handle 3.3v, it will Therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
+When using a port expander on your LCD, you will have to use 5v.  :raw-html:`<br />`
+Since the Raspberry Pi GPIO only handle 3.3v, it will Therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/level_shifter.jpg
    :align: center
    :alt: 4-channel I2C-safe Bi-directional Logic Level Shifter
 
 
-Connection to connect your Level Converter and port expander on the Raspberry Pi (**BOARD numbering scheme**):
+How to connect your Level Converter and port expander on the Raspberry Pi (**BOARD numbering scheme**) :raw-html:`<br />`
+------------------------------------------------------------------------------------------------------
+Connect the I2c to HV (High Level) on the Level Converter
+- GND: Pin GND (GND)
+- VCC: Pin HV  (5V) - Also connect 5v from the raspberry Pi Pin 2, to HV
+- SDA: Pin HV2 (SDA)
+- SCL: Pin HV1 (SCL)
 
+Connect th I2c LV (Low Level) on the Raspberry Pi
 - GND: Pin 6 (GND)
-- VCC: Pin 4 (5V)
+- VCC: Pin 4 (3V)
 - SDA: Pin 3 (SDA)
 - SCL: Pin 5 (SCL)
-
-
 
 
 .. --- Links ------------------------------------------------------------------
