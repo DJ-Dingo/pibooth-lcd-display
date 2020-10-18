@@ -22,6 +22,7 @@ I2c port address (**Default 0x27**) But it is set up with my I2c Address = **0x3
 Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD  :raw-html:`<br />` 
 ``app.lcd.write_string('Today Photos %s' % app.count.taken)``
 
+.. contents::
 
 Install
 -------
@@ -85,3 +86,11 @@ Connection to connect your Level Converter and port expander on the Raspberry Pi
 .. |PythonVersions| image:: https://img.shields.io/badge/python-2.7+ / 3.6+-red.svg
    :target: https://www.python.org/downloads
    :alt: Python 2.7+/3.6+
+
+.. |PypiPackage| image:: https://badge.fury.io/py/pibooth.svg
+   :target: 
+   :alt: PyPi package
+
+.. |Downloads| image:: https://img.shields.io/pypi/dm/pibooth?color=purple
+   :target: 
+   :alt: PyPi downloads
