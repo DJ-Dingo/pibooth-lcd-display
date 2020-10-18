@@ -52,6 +52,7 @@ States description
 Circuit diagram
 ---------------
 Here is the diagram for hardware connections.
+
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/Pibooth LCD-I2c Sketch 8_bb.png
    :align: center
    :alt:  PIR-sensor Electronic sketch
