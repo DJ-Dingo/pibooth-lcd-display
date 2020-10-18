@@ -13,14 +13,16 @@ pibooth-lcd-i2c
    :alt: LCD screen
 
 
-Adds an 16x2 lcd screen (Hitachi HD44780 controller), to show numbers of photos taken and Date/Time - connected Through I2c.  :raw-html:`<br />` 
+Add an LCD-screen with **Hitachi HD44780 controller** connected Through I2c, to show numbers of photos taken and Date/Time.  :raw-html:`<br />` 
 Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:`<br />` 
 
-Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``  :raw-html:`<br />`   
-I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT)
+* I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT)
+-- Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``  :raw-html:`<br />`
 
-Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD  :raw-html:`<br />` 
-``app.lcd.write_string('Today Photos %s' % app.count.taken)``
+-- Text "Today Photos" Max 12 with a 16x2 LCD :raw-html:`<br />`
+   ``app.lcd.write_string('Today Photos %s' % app.count.taken)``  :raw-html:`<br />`
+
+-- Date/Clock
 
 .. contents::
 
