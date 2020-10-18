@@ -33,6 +33,10 @@ Install
 Configuration
 -------------
 
+
+
+I2C on the back of LCD
+^^^^^^^^^^^^^^^^^^^^^^
 You need to know the address of your LCD.  :raw-html:`<br />` 
 You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi).  :raw-html:`<br />` 
 In my case the address of the display was **0x3F**.  :raw-html:`<br />` 
@@ -46,6 +50,11 @@ Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP2301
 
 The board on this photo has a **PCF8574** port expander chip on it. There are also boards with other chips, e.g. the Adafruit I²C/SPI LCD Backpack which uses an **MCP23008** port expander. And the **MCP23017**
 
+
+How to change adress on the I2C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can change the adress by soldering 1 or more wire on the back of the I2c
+A0, A1, A2 - see more here
 
 States description
 ------------------
