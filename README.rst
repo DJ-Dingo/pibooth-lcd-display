@@ -51,14 +51,14 @@ Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP2301
 The board on this photo has a **PCF8574** port expander chip on it. There are also boards with other chips, e.g. the Adafruit I²C/SPI LCD Backpack which uses an **MCP23008** port expander. And the **MCP23017**
 
 
-How to change adress on the I2C
+How to change address on the I2C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can change the adress by making a bridge. :raw-html:`<br />`  
+You can change the address by making a bridge. :raw-html:`<br />`  
 Soldering 1 or more wire on the back of the I2c **A0**, **A1**, **A2**
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/I2c-adress.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/I2c-address.png
    :align: center
-   :alt:  Change Adress on I2c
+   :alt:  Change Address on I2c
 
 States description
 ------------------
