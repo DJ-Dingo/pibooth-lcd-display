@@ -17,7 +17,7 @@ Adds an 16x2 lcd screen (Hitachi HD44780 controller), to show numbers of photos 
 Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:`<br />` 
 
 Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``  :raw-html:`<br />`   
-I2c port address (**Default 0x27**) But it is set up with my I2c Address = **0x3F**   
+I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT)
 
 Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD  :raw-html:`<br />` 
 ``app.lcd.write_string('Today Photos %s' % app.count.taken)``
@@ -39,7 +39,12 @@ I2C on the back of LCD
 ^^^^^^^^^^^^^^^^^^^^^^
 You need to know the address of your LCD.  :raw-html:`<br />` 
 You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi).  :raw-html:`<br />` 
-In my case the address of the display was **0x3F**.  :raw-html:`<br />` 
+In this case the address of the display was **0x3F**.  :raw-html:`<br />`
+
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/iic-address.png
+   :align: center
+   :alt: I2C Address
+
 You also need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
 It should be written on the microchip that’s soldered on to your I2c board. :raw-html:`<br />`  
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
