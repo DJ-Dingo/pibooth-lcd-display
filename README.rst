@@ -73,9 +73,9 @@ Wiring
 ------
 When using a port expander on your LCD, you will have to use 5v. Since the Raspberry Pi GPIO only handle 3.3v, it will Therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/Level Shifter.jpg
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/level_shifter.jpg
    :align: center
-   :alt: 4-channel I2C-safe Bi-directional Logic Level Converter
+   :alt: 4-channel I2C-safe Bi-directional Logic Level Shifter
 
 
 Connection to connect your Level Converter and port expander on the Raspberry Pi (**BOARD numbering scheme**):
