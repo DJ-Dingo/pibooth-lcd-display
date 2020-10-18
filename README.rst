@@ -35,15 +35,6 @@ Configuration
 
 
 
-How to find your I2c addresss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You need to know the address of your I2c. You can find it on the command line using the **sudo i2cdetect -y 1** command.  :raw-html:`<br />` 
-In this case the address of the display is **0x3F**.  :raw-html:`<br />`
-
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
-   :align: center
-   :alt: I2C Address
-
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You also need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
@@ -55,6 +46,15 @@ The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/i2c.png
    :align: center
    :alt: I2C on the back of LCD
+
+How to find your I2c addresss
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You need to know the address of your I2c. You can find it on the command line using the **sudo i2cdetect -y 1** command.  :raw-html:`<br />` 
+In this case the address of the display is **0x3F**.  :raw-html:`<br />`
+
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
+   :align: center
+   :alt: I2C Address
 
 How to change address on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
