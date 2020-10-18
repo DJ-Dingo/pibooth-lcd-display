@@ -1,4 +1,5 @@
-
+.. role:: raw-html(raw)
+    :format: html
 ====================
 pibooth-lcd-i2c
 ====================
@@ -12,16 +13,14 @@ pibooth-lcd-i2c
    :alt: LCD screen
 
 
-Adds an 16x2 lcd screen (Hitachi HD44780 controller), to show numbers of photos taken and Date/Time - connected Through I2c.
+Adds an 16x2 lcd screen (Hitachi HD44780 controller), to show numbers of photos taken and Date/Time - connected Through I2c.  :raw-html:`<br />` 
+This version is setup to use port expander - **PCF8574**.  :raw-html:`<br />` 
+Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:`<br />` 
 
-This version is setup to use port expander - **PCF8574**. 
-
-Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**.
-
-Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``   
+Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``  :raw-html:`<br />`   
 I2c port address (**Default 0x27**) But it is set up with my I2c Address = **0x3F**   
 
-Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD 
+Text "Today Photos" before "number of photos taken" Max 12 with a 16x2 LCD  :raw-html:`<br />` 
 ``app.lcd.write_string('Today Photos %s' % app.count.taken)``
 
 
@@ -34,7 +33,11 @@ Install
 Configuration
 -------------
 
-You need to know the address of your LCD. You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi). In my case the address of the display was **0x3F**. You also need to provide the name of the I²C port expander that your board uses. It should be written on the microchip that’s soldered on to your board. 
+You need to know the address of your LCD.  :raw-html:`<br />` 
+You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi).  :raw-html:`<br />` 
+In my case the address of the display was **0x3F**.  :raw-html:`<br />` 
+You also need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
+It should be written on the microchip that’s soldered on to your I2c board. :raw-html:`<br />`  
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/i2c.png
