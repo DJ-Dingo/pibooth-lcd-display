@@ -53,8 +53,8 @@ The board on this photo has a **PCF8574** port expander chip on it. There are al
 
 How to change address on the I2C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can change the address by making a bridge. :raw-html:`<br />`  
-Soldering 1 or more wire on the back of the I2c **A0**, **A1**, **A2**
+You can change the address by making a bridge. :raw-html:`<br />`
+Soldering 1 or more wire on the back of the I2c **A0**, **A1**, **A2** :raw-html:`<br />`
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/I2c-address.png
    :align: center
