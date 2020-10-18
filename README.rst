@@ -43,7 +43,7 @@ Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP2301
 
 The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<br />`
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-port-expander-name_.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-port-expander-name__.png
    :align: center
    :alt: I2C on the back of LCD
 
