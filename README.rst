@@ -53,7 +53,7 @@ Circuit diagram
 ---------------
 Here is the diagram for hardware connections.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/4-channel-I2C-safe-Bi-directional-Logic-Level-Converter.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/Pibooth%20LCD-I2c%20Sketch%208_bb.png
    :align: center
    :alt:  PIR-sensor Electronic sketch
 
