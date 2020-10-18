@@ -50,7 +50,7 @@ The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<
 
 How to find your I2c addresss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You need to know the address of your I2c. You can find it on the command line using the **sudo i2cdetect -y 1** command.  :raw-html:`<br />` 
+You need to know the address of your I2c. You can find it on the command line using the **"sudo i2cdetect -y 1"** command.  :raw-html:`<br />` 
 In this case the address of the display is **0x3F**.  :raw-html:`<br />`
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
@@ -94,14 +94,14 @@ How to connect your **Level Converter** and **Port Expander** on the Raspberry P
 Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  :raw-html:`<br />`
 
 - GND: Pin GND (GND)
-- VCC: Pin HV  (VCC)(5V) - Also connect **5v** from the raspberry Pi Pin 2, to **HV** on the Level Converter
+- VCC: Pin HV  (VCC)(5v) - Also connect **5v** from the raspberry Pi Pin 2, to **HV** on the Level Converter
 - SDA: Pin HV2 (SDA)
 - SCL: Pin HV1 (SCL)
 
 Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. :raw-html:`<br />`
 
 - GND: Pin 6 (GND)
-- VCC: Pin 4 (3.3V)
+- VCC: Pin 4 (3.3v)
 - SDA: Pin 3 (SDA)
 - SCL: Pin 5 (SCL)
 
