@@ -94,7 +94,7 @@ How to connect your **Level Converter** and **Port Expander** on the Raspberry P
 Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  :raw-html:`<br />`
 
 - GND: Pin GND (GND)
-- VCC: Pin HV  (VCC) - Also connect **5v** from the raspberry Pi Pin 2, to HV on the Level Converter
+- VCC: Pin HV  (VCC) - Also connect **5v** from the raspberry Pi Pin 2, to **HV** on the Level Converter
 - SDA: Pin HV2 (SDA)
 - SCL: Pin HV1 (SCL)
 
