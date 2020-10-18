@@ -89,16 +89,16 @@ Since the Raspberry Pi GPIO only handle 3.3v, it will Therefore be a good idea t
    :alt: 4-channel I2C-safe Bi-directional Logic Level converter
 
 
-How to connect your Level Converter and port expander on the Raspberry Pi (**BOARD numbering scheme**) :raw-html:`<br />`
+How to connect your **Level Converter** and **Port Expander** on the Raspberry Pi (**BOARD numbering scheme**) :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Connect the I2c to HV (High Level) on the Level Converter.  :raw-html:`<br />`
+Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  :raw-html:`<br />`
 
 - GND: Pin GND (GND)
 - VCC: Pin HV  (VCC) - Also connect **5v** from the raspberry Pi Pin 2, to HV on the Level Converter
 - SDA: Pin HV2 (SDA)
 - SCL: Pin HV1 (SCL)
 
-Connect the Raspberry Pi to LV (Low Level) on the Level Converter. :raw-html:`<br />`
+Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. :raw-html:`<br />`
 
 - GND: Pin 6 (GND)
 - VCC: Pin 4 (3.3V)
