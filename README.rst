@@ -37,9 +37,8 @@ Configuration
 
 I2C on the back of LCD
 ^^^^^^^^^^^^^^^^^^^^^^
-You need to know the address of your LCD.  :raw-html:`<br />` 
-You can find it on the command line using the **sudo i2cdetect 1** command (or **sudo i2cdetect 0** on the original Raspberry Pi).  :raw-html:`<br />` 
-In this case the address of the display was **0x3F**.  :raw-html:`<br />`
+You need to know the address of your LCD. You can find it on the command line using the **sudo i2cdetect -y 1** command.  :raw-html:`<br />` 
+In this case the address of the display is **0x3F**.  :raw-html:`<br />`
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
    :align: center
@@ -49,17 +48,15 @@ You also need to provide the name of the I²C port expander that your board uses
 It should be written on the microchip that’s soldered on to your I2c board. :raw-html:`<br />`  
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
 
+The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<br />` 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/i2c.png
    :align: center
    :alt: I2C on the back of LCD
 
-The board on this photo has a **PCF8574** port expander chip on it. There are also boards with other chips, e.g. the Adafruit I²C/SPI LCD Backpack which uses an **MCP23008** port expander. And the **MCP23017**
-
-
 How to change address on the I2C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can change the address by making a bridge. :raw-html:`<br />`
-Soldering 1 or more wire on the back of the I2c **A0**, **A1**, **A2** :raw-html:`<br />`
+Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, **A2** :raw-html:`<br />`
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/I2c-adress.png
    :align: center
