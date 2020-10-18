@@ -19,8 +19,8 @@ Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and t
 * I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT) :raw-html:`<br />`
   -- Port Expander and Address ``app.lcd = CharLCD('PCF8574', 0x3F)``  :raw-html:`<br />`
 
--- Text "Today Photos" Max 12 with a 16x2 LCD :raw-html:`<br />`
-   ``app.lcd.write_string('Today Photos %s' % app.count.taken)``  :raw-html:`<br />`
+  -- Text "Today Photos" Max 12 with a 16x2 LCD :raw-html:`<br />`
+     ``app.lcd.write_string('Today Photos %s' % app.count.taken)``  :raw-html:`<br />`
 
 **-- Date/Clock**
 
