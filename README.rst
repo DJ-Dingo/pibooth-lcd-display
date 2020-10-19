@@ -24,6 +24,7 @@ Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and t
 
   **-- Date/Clock**
 
+--------------------------------------------------------------------------------
 .. contents::
 
 Requirements
