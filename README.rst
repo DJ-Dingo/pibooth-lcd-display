@@ -94,6 +94,10 @@ Here is the diagram for hardware connections.
 
 Wiring
 ------
+
+I2C-safe Bi-directional Logic Level Converter 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 When using a port expander on your LCD, you will have to use 5v.  :raw-html:`<br />`
 Since the Raspberry Pi GPIO only handle 3.3v, it will therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
 
