@@ -33,7 +33,7 @@ Hardware
 ^^^^^^^^
 
 * 1 Raspberry Pi 3 Model B (or higher) :raw-html:`<br />`
-* 1 LCD-screen **Hitachi HD44780 controller** with I2c :raw-html:`<br />`
+* 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017) :raw-html:`<br />`
 * 1 I2c safe Bi-directional Logic Level Converter :raw-html:`<br />`
 
 Install
