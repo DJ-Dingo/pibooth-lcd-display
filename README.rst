@@ -40,6 +40,7 @@ Install
 -------
 
 ::
+How to Setup comming soon
 
 
 Configuration
