@@ -76,10 +76,10 @@ I2C is not turned on by default. Again, we can use raspi-config to enable it.
 
 The system will reboot. when it comes back up, log in and enter the following command
 
->ls /dev/*i2c*    :raw-html:`<br />` 
+ `` >ls /dev/*i2c*  ``   :raw-html:`<br />` 
 The Pi should respond with
 
-/dev/i2c-1         :raw-html:`<br />` 
+ `` /dev/i2c-1  ``        :raw-html:`<br />` 
 Which represents the user-mode I2C interface.
 
 
