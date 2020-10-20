@@ -48,6 +48,40 @@ How to Setup comming soon
 Configuration
 -------------
 
+I2C on Pi
+^^^^^^^^^
+
+The I2C peripheral is not turned on by default.  :raw-html:`<br />` 
+There are two methods to adjust the settings. To enable it, do the following.
+
+**Raspberry Pi Configuration via Desktop GUI**  :raw-html:`<br />` 
+You can use the Desktop GUI by heading to the Pi Start Menu > Preferences > Raspberry Pi Configuration.
+
+A window will pop up with different tabs to adjust settings. What we are interested is the Interfaces tab. :raw-html:`<br />`
+Click on the tab and select Enable for I2C. Click on the OK button to save.    :raw-html:`<br />`
+We recommend restarting your Pi to ensure that the changes to take effect.  :raw-html:`<br />`
+Click on the Pi Start Menu > Preferences > Shutdown. Since we just need to restart, click on the Restart button.
+
+**raspi-config Tool via Terminal**
+
+I2C is not turned on by default. Again, we can use raspi-config to enable it.
+
+* Run sudo raspi-config.
+* Use the down arrow to select 5 Interfacing Options
+* Arrow down to P5 I2C.
+* Select yes when it asks you to enable I2C
+* Also select yes if it asks about automatically loading the kernel module.
+* Use the right arrow to select the <Finish> button.
+* Select yes when it asks to reboot.
+
+The system will reboot. when it comes back up, log in and enter the following command
+
+>ls /dev/*i2c*    :raw-html:`<br />` 
+The Pi should respond with
+
+/dev/i2c-1         :raw-html:`<br />` 
+Which represents the user-mode I2C interface.
+
 
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
