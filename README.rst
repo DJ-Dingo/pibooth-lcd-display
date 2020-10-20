@@ -48,8 +48,8 @@ How to Setup comming soon
 Configuration
 -------------
 
-I2C on Pi
-^^^^^^^^^
+Turn I2C on the Raspberry Pi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The I2C peripheral is not turned on by default.  :raw-html:`<br />` 
 There are two methods to adjust the settings. To enable it, do the following.
