@@ -115,8 +115,10 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 
 States description
 ------------------
-Missing Picture
- 
+
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/state-sequence-lcd-i2c.png
+   :align: center
+   :alt:  State sequence
 
 Circuit diagram
 ---------------
