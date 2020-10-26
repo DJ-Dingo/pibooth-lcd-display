@@ -9,7 +9,7 @@ import textwrap
 from RPLCD.i2c import CharLCD
 
 
-__version__ = "1.0.6"
+__version__ = "1.0.7"
 
 @pibooth.hookimpl
 def pibooth_configure(cfg):
@@ -28,42 +28,42 @@ def pibooth_configure(cfg):
                    "Number of display rows 1 or 2(Default-LCD 16x2) or 4")
                    # Text
     cfg.add_option('LCD_I2C', 'lcd_taken_photo_text', "Taken Photo", 
-                   "Text before taken counter displayed Max-12 on 16x2 - Max 16 on 20x4")
+                   "Text before taken counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_printed_text', "Printed", 
-                   "Text before printed counter displayed Max-12 on 16x2 - Max 16 on 20x4")
+                   "Text before printed counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_forgotten_text', "Forgotten", 
-                   "Text before forgotten counter displayed Max-12 on 16x2 - Max 16 on 20x4")
+                   "Text before forgotten counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_remaining_duplicates_text', "Duplicates", 
-                   "Text before remaining_duplicates counter displayed Max-12 on 16x2 - Max 16 on 20x4")
+                   "Text before remaining_duplicates counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
                    # Free Text
     cfg.add_option('LCD_I2C', 'lcd_free_text1', "Free Text 1", 
-                   "Free Text 1 - Max-16 on 16x2 - Max 20 on 20x4")
+                   "Free Text 1 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text2', "Free Text 2", 
-                   "Free Text 2 - Max-16 on 16x2 - Max 20 on 20x4")
+                   "Free Text 2 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text3', "Free Text 3", 
-                   "Free Text 3 - Max-16 on 16x2 - Max 20 on 20x4")
+                   "Free Text 3 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text4', "Free Text 4", 
-                   "Free Text 4 - Max-16 on 16x2 - Max 20 on 20x4")
-                   # Line select
+                   "Free Text 4 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
+                   # Line select options
     cfg.add_option('LCD_I2C', 'lcd_taken_photo_line', "0", 
-                   "What line to display taken photo ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display taken photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_date_time_line', "1", 
-                   "What line to display date/time ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display date/time (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_printed_line', " ", 
-                   "What line to display printed photo ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display printed photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_forgotten_line', " ", 
-                   "What line to display forgotten photo ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display forgotten photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_remaining_duplicates_line', " ", 
-                   "What line to display remaining_duplicates ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display remaining_duplicates (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
+                   # Free-text line select
     cfg.add_option('LCD_I2C', 'lcd_free_text1_line', " ", 
-                   "What line to display Free Text 1 ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display the Free_Text_1 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_free_text2_line', " ", 
-                   "What line to display Free Text 2 ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display the Free_Text_2 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_free_text3_line', " ", 
-                   "What line to display Free Text 3 ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
+                   "What line to display the Free_Text_3 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
     cfg.add_option('LCD_I2C', 'lcd_free_text4_line', " ", 
-                   "What line to display Free Text 4 ((( FIRST LINE STARTS WITH 0, then 1,2,3 )))")
-
+                   "What line to display the Free_Text_4 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
 
 # 0=Taken_Photo, 2=Printed, 3=Forgotten, 4=Remaining_Duplicates, 1=Date/Time")
 
@@ -94,9 +94,20 @@ def write_photo_count(app, cfg):
                         app.taken_photo_line = cfg.get('LCD_I2C', 'lcd_taken_photo_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 0)
                         app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')
-                        app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=12, placeholder=""))
-                        app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
-                        app.lcd.write_string(" "'%s' % app.count.taken)
+                        
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.taken)
+                        elif int('%s' % app.cols) == 20:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=16, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 16)
+                            app.lcd.write_string(" "'%s' % app.count.taken)
+                        else:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.taken)
         except OSError:
             pass
 
@@ -112,9 +123,20 @@ def write_printed_count(app, cfg):
                         app.printed_line = cfg.get('LCD_I2C', 'lcd_printed_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.printed_line), 0)
                         app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')
-                        app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=12, placeholder=""))
-                        app.lcd.cursor_pos = (int('%s' % app.printed_line), 12)
-                        app.lcd.write_string(" "'%s' % app.count.printed)
+                        
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.printed)
+                        elif int('%s' % app.cols) == 20:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=16, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 16)
+                            app.lcd.write_string(" "'%s' % app.count.printed)
+                        else:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.printed)
         except OSError:
             pass
 
@@ -130,9 +152,20 @@ def write_forgotten_count(app, cfg):
                         app.forgotten_line = cfg.get('LCD_I2C', 'lcd_forgotten_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 0)
                         app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')
-                        app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=12, placeholder=""))
-                        app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
-                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                        
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.forgotten)
+                        elif int('%s' % app.cols) == 20:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=16, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 16)
+                            app.lcd.write_string(" "'%s' % app.count.forgotten)
+                        else:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.forgotten)
         except OSError:
             pass
 
@@ -145,14 +178,23 @@ def write_remaining_duplicates_count(app, cfg):
                 d = app.remaining_duplicates_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
                 for d in (('%s' % app.remaining_duplicates_line)):
                     if (d.isnumeric()) == True:
-                        
                         app.remaining_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.remaining_line), 0)
                         app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')
                         
-                        app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=12, placeholder=""))
-                        app.lcd.cursor_pos = (int('%s' % app.remaining_line), 12)
-                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                        elif int('%s' % app.cols) == 20:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=16, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 16)
+                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                        else:
+                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=12, placeholder=""))
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 12)
+                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
         except OSError:
             pass
 
@@ -165,7 +207,6 @@ def write_free_text1(app, cfg):
                 d = app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
                 for d in (('%s' % app.free_text1_line)):
                     if (d.isnumeric()) == True:
-                        
                         app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.free_text1_line), 0)
                         app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')
@@ -182,7 +223,6 @@ def write_free_text2(app, cfg):
                 d = app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
                 for d in (('%s' % app.free_text2_line)):
                     if (d.isnumeric()) == True:
-                        
                         app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.free_text2_line), 0)
                         app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')
@@ -199,7 +239,6 @@ def write_free_text3(app, cfg):
                 d = app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
                 for d in (('%s' % app.free_text3_line)):
                     if (d.isnumeric()) == True:
-                        
                         app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.free_text3_line), 0)
                         app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')
@@ -216,7 +255,6 @@ def write_free_text4(app, cfg):
                 d = app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
                 for d in (('%s' % app.free_text4_line)):
                     if (d.isnumeric()) == True:
-                        
                         app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
                         app.lcd.cursor_pos = (int('%s' % app.free_text4_line), 0)
                         app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')
@@ -240,10 +278,13 @@ def write_i2c(app, cfg):
     except OSError:
         pass
 
+# app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
+
 @pibooth.hookimpl
 def pibooth_startup(app, cfg):
+    # Connect the LCD to I2c portexpander
+    # enter in 'wait' state.
     write_i2c(app, cfg)
-    # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
     
     # Re-write the number of taken photo each time pibooth
     # startup.
@@ -283,7 +324,10 @@ def pibooth_startup(app, cfg):
 
 @pibooth.hookimpl
 def state_wait_enter(app, cfg):
+    # Connect the LCD to I2c portexpander
+    # enter in 'wait' state.
     write_i2c(app, cfg)
+
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
     write_photo_count(app, cfg)
@@ -321,6 +365,11 @@ def state_wait_enter(app, cfg):
     write_free_text4(app, cfg)
 
 @pibooth.hookimpl
+def state_choose_enter(app, cfg):
+    # Re-Write the date at chose do
+    write_date(app, cfg)
+
+@pibooth.hookimpl
 def state_wait_do(app, cfg):
     # Re-Write the date at 'wait' do
     write_date(app, cfg)
@@ -336,7 +385,22 @@ def state_chosen_do(app, cfg):
     write_date(app, cfg)
 
 @pibooth.hookimpl
+def state_preview_enter(app, cfg):
+    # Re-Write the date at preview_do
+    write_date(app, cfg)
+
+@pibooth.hookimpl
 def state_preview_do(app, cfg):
+    # Re-Write the date at preview_do
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_preview_validate(app, cfg):
+    # Re-Write the date at preview_do
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_preview_exit(app, cfg):
     # Re-Write the date at preview_do
     write_date(app, cfg)
 
