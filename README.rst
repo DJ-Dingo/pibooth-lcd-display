@@ -20,8 +20,10 @@ It also have 4 x Free-Text where you can write your own text  :raw-html:`<br />`
 Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:`<br />` 
 * I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT) :raw-html:`<br />`
 
-  -- Text "Today Photos" Max 12 with a 16x2 LCD :raw-html:`<br />`
-  -- Text "Today Photos" Max 16 with a 20x2 LCD :raw-html:`<br />`
+  -- Show text like "Taken Photoś 139" (Max 12 letters before photo count) with a 16x2 LCD :raw-html:`<br />`
+  -- Show text like "Today Photos 139" (Max 16 letters before photo count) with a 20x4 LCD :raw-html:`<br />`
+  -- Show a "Free-text" (Max 16) with a 16x2 LCD :raw-html:`<br />`
+  -- Show a "Free-text" (Max 20) with a 20x4 LCD :raw-html:`<br />`  
 
   **-- Date/Clock**
 
