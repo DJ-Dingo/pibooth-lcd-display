@@ -13,7 +13,7 @@ pibooth-lcd-i2c
    :alt: LCD screen
 
 
-Adds any 16x2 or 20x4 like LCD-screen with a **Hitachi HD44780 controller** using a port expander connected Through I2c.  :raw-html:`<br />`
+Add any 16x2 or 20x4 like LCD-screen with a **Hitachi HD44780 controller** using a port expander connected Through I2c.  :raw-html:`<br />`
 It can show numbers of photos taken, Date/Time, Printed photos, forgotten photos, Remaining Duplicates.  :raw-html:`<br />` 
 It also have 4 x Free-Text where you can write your own text  :raw-html:`<br />` 
 
@@ -22,8 +22,8 @@ Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and t
 
   -- Show text like "Taken Photoś 139" (Max 12 letters before photo count) with a 16x2 LCD :raw-html:`<br />`
   -- Show text like "Today Photos 139" (Max 16 letters before photo count) with a 20x4 LCD :raw-html:`<br />`
-  -- Show a "Free-text" (Max 16) with a 16x2 LCD :raw-html:`<br />`
-  -- Show a "Free-text" (Max 20) with a 20x4 LCD :raw-html:`<br />`  
+  -- Show a "Free-text" (Max 16 Letters) with a 16x2 LCD :raw-html:`<br />`
+  -- Show a "Free-text" (Max 20 Letters) with a 20x4 LCD :raw-html:`<br />`  
 
   **-- It can show a Date/Time Clock**
 
