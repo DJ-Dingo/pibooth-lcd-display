@@ -25,7 +25,9 @@ Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and t
   -- Show a "Free-text" (Max 16) with a 16x2 LCD :raw-html:`<br />`
   -- Show a "Free-text" (Max 20) with a 20x4 LCD :raw-html:`<br />`  
 
-  **-- Date/Clock**
+  **-- It can show a Date/Time Clock**
+
+**All changes can be made in the pibooth.cfg**
 
 --------------------------------------------------------------------------------
 
