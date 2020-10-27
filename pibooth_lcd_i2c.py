@@ -5,11 +5,10 @@
 import time
 import datetime
 import pibooth
-import textwrap
 from RPLCD.i2c import CharLCD
 
-
-__version__ = "1.0.7"
+__version__ = "1.0.8"
+# DJ-Dingo, Kenneth Nicholas Jørgensen
 
 @pibooth.hookimpl
 def pibooth_configure(cfg):
@@ -29,6 +28,8 @@ def pibooth_configure(cfg):
                    # Text
     cfg.add_option('LCD_I2C', 'lcd_taken_photo_text', "Taken Photo", 
                    "Text before taken counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
+    cfg.add_option('LCD_I2C', 'lcd_show_date_time', "(d)/(m) - (H):(M):(S)", 
+                   "You can change the way Date-Time is displayed. Max-16 character on a 16x2 display - Max 20 character on a 20x4 display \n# Default (d)/(m) - (H):(M):(S).")
     cfg.add_option('LCD_I2C', 'lcd_printed_text', "Printed", 
                    "Text before printed counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_forgotten_text', "Forgotten", 
@@ -73,39 +74,43 @@ def write_date(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                e = app.date_time_line = cfg.get('LCD_I2C', 'lcd_date_time_line').strip('"')
-                for e in (('%s' % app.date_time_line)):
-                    if (e.isnumeric()) == True:
-                        app.date_time_line = cfg.get('LCD_I2C', 'lcd_date_time_line').strip('"')
+                e_line = app.date_time_line = cfg.get('LCD_I2C', 'lcd_date_time_line').strip('"')
+                for e_line in (('%s' % app.date_time_line)):
+                    if (e_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.date_time_line), 0)
-                        app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+                        #app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
+                        app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+                        #app.lcd.write_string('%s' % app.show_date_time)
+                        # (d)/(m) - (H):(M):(S) Default
+                        newdatetime = ('%s' % app.show_date_time).replace("(", "%").replace(')', "")
+                        app.lcd.write_string('%s' % time.strftime(newdatetime))
         except OSError:
             pass
-    
+        
 def write_photo_count(app, cfg):
     """Method called to write the Taken Photo on the screen
     """
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                a = app.taken_photo_line = cfg.get('LCD_I2C', 'lcd_taken_photo_line').strip('"')
-                for a in (('%s' % app.taken_photo_line)):
-                    if (a.isnumeric()) == True:
-                        app.taken_photo_line = cfg.get('LCD_I2C', 'lcd_taken_photo_line').strip('"')
+                a_line = app.taken_photo_line = cfg.get('LCD_I2C', 'lcd_taken_photo_line').strip('"')
+                for a_line in (('%s' % app.taken_photo_line)):
+                    if (a_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 0)
-                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')
-                        
                         app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
                         if int('%s' % app.cols) == 16:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=12, placeholder=""))
+                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.taken_photo_text)
                             app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.taken)
                         elif int('%s' % app.cols) == 20:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=16, placeholder=""))
+                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.taken_photo_text)
                             app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 16)
                             app.lcd.write_string(" "'%s' % app.count.taken)
                         else:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.taken_photo_text), width=12, placeholder=""))
+                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.taken_photo_text)
                             app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.taken)
         except OSError:
@@ -117,25 +122,25 @@ def write_printed_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                b = app.printed_photo_line = cfg.get('LCD_I2C', 'lcd_printed_line').strip('"')
-                for b in (('%s' % app.printed_photo_line)):
-                    if (b.isnumeric()) == True:
-                        app.printed_line = cfg.get('LCD_I2C', 'lcd_printed_line').strip('"')
-                        app.lcd.cursor_pos = (int('%s' % app.printed_line), 0)
-                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')
-                        
+                b_line = app.printed_photo_line = cfg.get('LCD_I2C', 'lcd_printed_line').strip('"')
+                for b_line in (('%s' % app.printed_photo_line)):
+                    if (b_line.isnumeric()) == True:
+                        app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 0)
                         app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
                         if int('%s' % app.cols) == 16:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=12, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 12)
+                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.printed_text)
+                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.printed)
                         elif int('%s' % app.cols) == 20:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=16, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 16)
+                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.printed_text)
+                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 16)
                             app.lcd.write_string(" "'%s' % app.count.printed)
                         else:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.printed_text), width=12, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.printed_line), 12)
+                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.printed_text)
+                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.printed)
         except OSError:
             pass
@@ -146,24 +151,24 @@ def write_forgotten_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                c = app.forgotten_line = cfg.get('LCD_I2C', 'lcd_forgotten_line').strip('"')
-                for c in (('%s' % app.forgotten_line)):
-                    if (c.isnumeric()) == True:
-                        app.forgotten_line = cfg.get('LCD_I2C', 'lcd_forgotten_line').strip('"')
+                c_line = app.forgotten_line = cfg.get('LCD_I2C', 'lcd_forgotten_line').strip('"')
+                for c_line in (('%s' % app.forgotten_line)):
+                    if (c_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 0)
-                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')
-                        
                         app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
                         if int('%s' % app.cols) == 16:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=12, placeholder=""))
+                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.forgotten_text)
                             app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.forgotten)
                         elif int('%s' % app.cols) == 20:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=16, placeholder=""))
+                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.forgotten_text)
                             app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 16)
                             app.lcd.write_string(" "'%s' % app.count.forgotten)
                         else:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.forgotten_text), width=12, placeholder=""))
+                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.forgotten_text)
                             app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.forgotten)
         except OSError:
@@ -175,25 +180,25 @@ def write_remaining_duplicates_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d = app.remaining_duplicates_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
-                for d in (('%s' % app.remaining_duplicates_line)):
-                    if (d.isnumeric()) == True:
-                        app.remaining_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
-                        app.lcd.cursor_pos = (int('%s' % app.remaining_line), 0)
-                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')
-                        
+                d_line = app.remaining_duplicates_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
+                for d_line in (('%s' % app.remaining_duplicates_line)):
+                    if (d_line.isnumeric()) == True:
+                        app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 0)
                         app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
                         if int('%s' % app.cols) == 16:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=12, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 12)
+                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
                         elif int('%s' % app.cols) == 20:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=16, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 16)
+                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 16)
                             app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
                         else:
-                            app.lcd.write_string(textwrap.shorten(('%s' % app.remaining_duplicates_text), width=12, placeholder=""))
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_line), 12)
+                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:12]
+                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
+                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 12)
                             app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
         except OSError:
             pass
@@ -204,13 +209,20 @@ def write_free_text1(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d = app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
-                for d in (('%s' % app.free_text1_line)):
-                    if (d.isnumeric()) == True:
-                        app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
+                f_line = app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
+                for f_line in (('%s' % app.free_text1_line)):
+                    if (f_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.free_text1_line), 0)
-                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')
-                        app.lcd.write_string('%s' % app.free_text1)
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.free_text1)
+                        elif int('%s' % app.cols) == 20:
+                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')[:20]
+                            app.lcd.write_string('%s' % app.free_text1)
+                        else:
+                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')
+                            app.lcd.write_string('%s' % app.free_text1)
         except OSError:
             pass
 
@@ -220,13 +232,20 @@ def write_free_text2(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d = app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
-                for d in (('%s' % app.free_text2_line)):
-                    if (d.isnumeric()) == True:
-                        app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
+                g_line = app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
+                for g_line in (('%s' % app.free_text2_line)):
+                    if (g_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.free_text2_line), 0)
-                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')
-                        app.lcd.write_string('%s' % app.free_text2)
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.free_text2)
+                        elif int('%s' % app.cols) == 20:
+                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')[:20]
+                            app.lcd.write_string('%s' % app.free_text2)
+                        else:
+                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')
+                            app.lcd.write_string('%s' % app.free_text2)
         except OSError:
             pass
 
@@ -236,13 +255,20 @@ def write_free_text3(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d = app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
-                for d in (('%s' % app.free_text3_line)):
-                    if (d.isnumeric()) == True:
-                        app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
+                h_line = app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
+                for h_line in (('%s' % app.free_text3_line)):
+                    if (h_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.free_text3_line), 0)
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')
-                        app.lcd.write_string('%s' % app.free_text3)
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.free_text3)
+                        elif int('%s' % app.cols) == 20:
+                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')[:20]
+                            app.lcd.write_string('%s' % app.free_text3)
+                        else:
+                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')
+                            app.lcd.write_string('%s' % app.free_text3)
         except OSError:
             pass
         
@@ -252,17 +278,24 @@ def write_free_text4(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d = app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
-                for d in (('%s' % app.free_text4_line)):
-                    if (d.isnumeric()) == True:
-                        app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
+                i_line = app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
+                for i_line in (('%s' % app.free_text4_line)):
+                    if (i_line.isnumeric()) == True:
                         app.lcd.cursor_pos = (int('%s' % app.free_text4_line), 0)
-                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')
-                        app.lcd.write_string('%s' % app.free_text4)
+                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
+                        if int('%s' % app.cols) == 16:
+                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')[:16]
+                            app.lcd.write_string('%s' % app.free_text4)
+                        elif int('%s' % app.cols) == 20:
+                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')[:20]
+                            app.lcd.write_string('%s' % app.free_text4)
+                        else:
+                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')
+                            app.lcd.write_string('%s' % app.free_text4)
         except OSError:
             pass
 
-def write_i2c(app, cfg):
+def connect_i2c(app, cfg):
     """I2c connect to lcd"""
     try:
         app.chip = cfg.get('LCD_I2C', 'lcd_chip').strip('"')
@@ -283,8 +316,8 @@ def write_i2c(app, cfg):
 @pibooth.hookimpl
 def pibooth_startup(app, cfg):
     # Connect the LCD to I2c portexpander
-    # enter in 'wait' state.
-    write_i2c(app, cfg)
+    # startup.
+    connect_i2c(app, cfg)
     
     # Re-write the number of taken photo each time pibooth
     # startup.
@@ -326,7 +359,7 @@ def pibooth_startup(app, cfg):
 def state_wait_enter(app, cfg):
     # Connect the LCD to I2c portexpander
     # enter in 'wait' state.
-    write_i2c(app, cfg)
+    connect_i2c(app, cfg)
 
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
@@ -365,13 +398,13 @@ def state_wait_enter(app, cfg):
     write_free_text4(app, cfg)
 
 @pibooth.hookimpl
-def state_choose_enter(app, cfg):
-    # Re-Write the date at chose do
+def state_wait_do(app, cfg):
+    # Re-Write the date at 'wait' do
     write_date(app, cfg)
 
 @pibooth.hookimpl
-def state_wait_do(app, cfg):
-    # Re-Write the date at 'wait' do
+def state_choose_enter(app, cfg):
+    # Re-Write the date at chose do
     write_date(app, cfg)
 
 @pibooth.hookimpl
