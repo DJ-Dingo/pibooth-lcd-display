@@ -7,7 +7,7 @@ import datetime
 import pibooth
 from RPLCD.i2c import CharLCD
 
-__version__ = "1.0.8"
+__version__ = "1.0.9"
 # DJ-Dingo, Kenneth Nicholas Jørgensen
 
 @pibooth.hookimpl
@@ -16,57 +16,46 @@ def pibooth_configure(cfg):
     cfg.add_option('LCD_I2C', 'lcd_chip', "PCF8574", 
                    "Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017")
     cfg.add_option('LCD_I2C', 'lcd_port_address', "0x3F", 
-                   "Port address 0x3F(Default)")
+                   "Change Port Address 0x3F(Default)")
     cfg.add_option('LCD_I2C', 'lcd_port', "1", 
-                   "The I2C port number 1(Default) or 2")
+                   "Change the I2C port number 1 or 2 - (Default = 1)")
     cfg.add_option('LCD_I2C', 'lcd_charmap', "A02", 
-                   "The I2C charmap A00 or A02(Default) or ST0B")
+                   "Change the I2C charmap A00 or A02 or ST0B - (Default = A02)")
     cfg.add_option('LCD_I2C', 'lcd_cols', "16", 
-                   "Number of columns per row 16(Default-LCD 16x2) or 20")
+                   "Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD)")
     cfg.add_option('LCD_I2C', 'lcd_rows', "2", 
-                   "Number of display rows 1 or 2(Default-LCD 16x2) or 4")
+                   "Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD)")
                    # Text
     cfg.add_option('LCD_I2C', 'lcd_taken_photo_text', "Taken Photo", 
-                   "Text before taken counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
+                   "Text before taken counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_show_date_time', "(d)/(m) - (H):(M):(S)", 
-                   "You can change the way Date-Time is displayed. Max-16 character on a 16x2 display - Max 20 character on a 20x4 display \n# Default (d)/(m) - (H):(M):(S).")
+                   "You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display \n# Default (d)/(m) - (H):(M):(S).")
     cfg.add_option('LCD_I2C', 'lcd_printed_text', "Printed", 
-                   "Text before printed counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
+                   "Text before printed counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_forgotten_text', "Forgotten", 
-                   "Text before forgotten counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
+                   "Text before forgotten counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_remaining_duplicates_text', "Duplicates", 
-                   "Text before remaining_duplicates counter is displayed Max-12 on a 16x2 display - Max 16 on a 20x4 display")
+                   "Text before remaining_duplicates counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
                    # Free Text
     cfg.add_option('LCD_I2C', 'lcd_free_text1', "Free Text 1", 
-                   "Free Text 1 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
+                   "Free Text 1 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text2', "Free Text 2", 
-                   "Free Text 2 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
+                   "Free Text 2 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text3', "Free Text 3", 
-                   "Free Text 3 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
+                   "Free Text 3 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_free_text4', "Free Text 4", 
-                   "Free Text 4 - Max-16 on a 16x2 display - Max 20 on a 20x4 display")
+                   "Free Text 4 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display")
                    # Line select options
-    cfg.add_option('LCD_I2C', 'lcd_taken_photo_line', "0", 
-                   "What line to display taken photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_date_time_line', "1", 
-                   "What line to display date/time (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_printed_line', " ", 
-                   "What line to display printed photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_forgotten_line', " ", 
-                   "What line to display forgotten photo (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_remaining_duplicates_line', " ", 
-                   "What line to display remaining_duplicates (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-                   # Free-text line select
-    cfg.add_option('LCD_I2C', 'lcd_free_text1_line', " ", 
-                   "What line to display the Free_Text_1 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_free_text2_line', " ", 
-                   "What line to display the Free_Text_2 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_free_text3_line', " ", 
-                   "What line to display the Free_Text_3 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
-    cfg.add_option('LCD_I2C', 'lcd_free_text4_line', " ", 
-                   "What line to display the Free_Text_4 (First line on the display is 0, then 1,2,3)\n# You can choose only (0 or 1) on a 1602 display, and (0 or 1 or 2 or 3) on a 2004 display\n# Leave empty if you dont want it to show on the display")
+    cfg.add_option('LCD_I2C', 'lcd_line_1', "Taken_Photo", 
+                   "Choose what to display on line 1\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+    cfg.add_option('LCD_I2C', 'lcd_line_2', "Date_Time", 
+                   "Choose what to display on line 2\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+    cfg.add_option('LCD_I2C', 'lcd_line_3', " ", 
+                   "Choose what to display on line 3\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+    cfg.add_option('LCD_I2C', 'lcd_line_4', " ", 
+                   "Choose what to display on line 4\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
 
-# 0=Taken_Photo, 2=Printed, 3=Forgotten, 4=Remaining_Duplicates, 1=Date/Time")
+#'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4')
 
 def write_date(app, cfg):
     """Method called to write the Date on the screen
@@ -74,47 +63,135 @@ def write_date(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                e_line = app.date_time_line = cfg.get('LCD_I2C', 'lcd_date_time_line').strip('"')
-                for e_line in (('%s' % app.date_time_line)):
-                    if (e_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.date_time_line), 0)
-                        #app.lcd.write_string('%s' % time.strftime('%d/%m - %H:%M:%S'))
-                        app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
-                        #app.lcd.write_string('%s' % app.show_date_time)
-                        # (d)/(m) - (H):(M):(S) Default
-                        newdatetime = ('%s' % app.show_date_time).replace("(", "%").replace(')', "")
-                        app.lcd.write_string('%s' % time.strftime(newdatetime))
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "date_time" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
+                    app.lcd.write_string(time.strftime(newdatetime))
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "date_time" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
+                    app.lcd.write_string(time.strftime(newdatetime))
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "date_time" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
+                    app.lcd.write_string(time.strftime(newdatetime))
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "date_time" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
+                    app.lcd.write_string(time.strftime(newdatetime))
         except OSError:
             pass
-        
+
+
 def write_photo_count(app, cfg):
     """Method called to write the Taken Photo on the screen
     """
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                a_line = app.taken_photo_line = cfg.get('LCD_I2C', 'lcd_taken_photo_line').strip('"')
-                for a_line in (('%s' % app.taken_photo_line)):
-                    if (a_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.taken_photo_text)
-                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.taken)
-                        elif int('%s' % app.cols) == 20:
-                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.taken_photo_text)
-                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 16)
-                            app.lcd.write_string(" "'%s' % app.count.taken)
-                        else:
-                            app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.taken_photo_text)
-                            app.lcd.cursor_pos = (int('%s' % app.taken_photo_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.taken)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "taken_photo" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    elif int(app.cols) == 20:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:16]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (0, 16)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    else:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "taken_photo" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    elif int(app.cols) == 20:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:16]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (1, 16)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    else:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "taken_photo" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    elif int(app.cols) == 20:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:16]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (2, 16)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    else:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "taken_photo" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    elif int(app.cols) == 20:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:16]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (3, 16)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
+                    else:
+                        app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')[:12]
+                        app.lcd.write_string(app.taken_photo_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.taken)
         except OSError:
             pass
+
 
 def write_printed_count(app, cfg):
     """Method called to write the Printed Photo on the screen
@@ -122,28 +199,93 @@ def write_printed_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                b_line = app.printed_photo_line = cfg.get('LCD_I2C', 'lcd_printed_line').strip('"')
-                for b_line in (('%s' % app.printed_photo_line)):
-                    if (b_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.printed_text)
-                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.printed)
-                        elif int('%s' % app.cols) == 20:
-                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.printed_text)
-                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 16)
-                            app.lcd.write_string(" "'%s' % app.count.printed)
-                        else:
-                            app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.printed_text)
-                            app.lcd.cursor_pos = (int('%s' % app.printed_photo_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.printed)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "printed" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    elif int(app.cols) == 20:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:16]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (0, 16)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    else:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "printed" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    elif int(app.cols) == 20:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:16]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (1, 16)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    else:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "printed" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    elif int(app.cols) == 20:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:16]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (2, 16)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    else:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "printed" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    elif int(app.cols) == 20:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:16]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (3, 16)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
+                    else:
+                        app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')[:12]
+                        app.lcd.write_string(app.printed_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.printed)
         except OSError:
             pass
+
 
 def write_forgotten_count(app, cfg):
     """Method called to write the Forgotten Photo on the screen
@@ -151,28 +293,93 @@ def write_forgotten_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                c_line = app.forgotten_line = cfg.get('LCD_I2C', 'lcd_forgotten_line').strip('"')
-                for c_line in (('%s' % app.forgotten_line)):
-                    if (c_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.forgotten_text)
-                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.forgotten)
-                        elif int('%s' % app.cols) == 20:
-                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.forgotten_text)
-                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 16)
-                            app.lcd.write_string(" "'%s' % app.count.forgotten)
-                        else:
-                            app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.forgotten_text)
-                            app.lcd.cursor_pos = (int('%s' % app.forgotten_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.forgotten)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "forgotten" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    elif int(app.cols) == 20:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:16]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (0, 16)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    else:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "forgotten" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    elif int(app.cols) == 20:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:16]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (1, 16)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    else:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "forgotten" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    elif int(app.cols) == 20:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:16]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (2, 16)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    else:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "forgotten" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    elif int(app.cols) == 20:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:16]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (3, 16)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    else:
+                        app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')[:12]
+                        app.lcd.write_string(app.forgotten_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.forgotten)
         except OSError:
             pass
+
 
 def write_remaining_duplicates_count(app, cfg):
     """Method called to write the Remaining Duplicates Photo on the screen
@@ -180,28 +387,93 @@ def write_remaining_duplicates_count(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                d_line = app.remaining_duplicates_line = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_line').strip('"')
-                for d_line in (('%s' % app.remaining_duplicates_line)):
-                    if (d_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
-                        elif int('%s' % app.cols) == 20:
-                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 16)
-                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
-                        else:
-                            app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text').strip('"')[:12]
-                            app.lcd.write_string('%s' % app.remaining_duplicates_text)
-                            app.lcd.cursor_pos = (int('%s' % app.remaining_duplicates_line), 12)
-                            app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "remaining_duplicates" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    elif int(app.cols) == 20:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:16]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (0, 16)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    else:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (0, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "remaining_duplicates" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    elif int(app.cols) == 20:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:16]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (1, 16)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    else:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (1, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "remaining_duplicates" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    elif int(app.cols) == 20:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:16]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (2, 16)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    else:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (2, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "remaining_ruplicates" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    elif int(app.cols) == 20:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:16]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (3, 16)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    else:
+                        app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')[:12]
+                        app.lcd.write_string(app.remaining_duplicates_text)
+                        app.lcd.cursor_pos = (3, 12)
+                        app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
         except OSError:
             pass
+
 
 def write_free_text1(app, cfg):
     """Method called to write the Free-Text 1 on the screen
@@ -209,22 +481,69 @@ def write_free_text1(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                f_line = app.free_text1_line = cfg.get('LCD_I2C', 'lcd_free_text1_line').strip('"')
-                for f_line in (('%s' % app.free_text1_line)):
-                    if (f_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.free_text1_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.free_text1)
-                        elif int('%s' % app.cols) == 20:
-                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')[:20]
-                            app.lcd.write_string('%s' % app.free_text1)
-                        else:
-                            app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1').strip('"')
-                            app.lcd.write_string('%s' % app.free_text1)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "free_text_1" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:16]
+                        app.lcd.write_string(app.free_text1)
+                    elif int(app.cols) == 20:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:20]
+                        app.lcd.write_string(app.free_text1)
+                    else:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')
+                        app.lcd.write_string(app.free_text1)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "free_text_1" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:16]
+                        app.lcd.write_string(app.free_text1)
+                    elif int(app.cols) == 20:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:20]
+                        app.lcd.write_string(app.free_text1)
+                    else:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')
+                        app.lcd.write_string(app.free_text1)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "free_text_1" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:16]
+                        app.lcd.write_string(app.free_text1)
+                    elif int(app.cols) == 20:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:20]
+                        app.lcd.write_string(app.free_text1)
+                    else:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')
+                        app.lcd.write_string(app.free_text1)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "free_text_1" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:16]
+                        app.lcd.write_string(app.free_text1)
+                    elif int('%s' % app.cols) == 20:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')[:20]
+                        app.lcd.write_string(app.free_text1)
+                    else:
+                        app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')
+                        app.lcd.write_string(app.free_text1)
         except OSError:
             pass
+
 
 def write_free_text2(app, cfg):
     """Method called to write the Free-Text 2 on the screen
@@ -232,22 +551,69 @@ def write_free_text2(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                g_line = app.free_text2_line = cfg.get('LCD_I2C', 'lcd_free_text2_line').strip('"')
-                for g_line in (('%s' % app.free_text2_line)):
-                    if (g_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.free_text2_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.free_text2)
-                        elif int('%s' % app.cols) == 20:
-                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')[:20]
-                            app.lcd.write_string('%s' % app.free_text2)
-                        else:
-                            app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2').strip('"')
-                            app.lcd.write_string('%s' % app.free_text2)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "free_text_2" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:16]
+                        app.lcd.write_string(app.free_text2)
+                    elif int(app.cols) == 20:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:20]
+                        app.lcd.write_string(app.free_text2)
+                    else:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')
+                        app.lcd.write_string(app.free_text2)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "free_text_2" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:16]
+                        app.lcd.write_string(app.free_text2)
+                    elif int(app.cols) == 20:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:20]
+                        app.lcd.write_string(app.free_text2)
+                    else:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')
+                        app.lcd.write_string(app.free_text2)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "free_text_2" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:16]
+                        app.lcd.write_string(app.free_text2)
+                    elif int(app.cols) == 20:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:20]
+                        app.lcd.write_string(app.free_text2)
+                    else:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')
+                        app.lcd.write_string(app.free_text2)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "free_text_2" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:16]
+                        app.lcd.write_string(app.free_text2)
+                    elif int(app.cols) == 20:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')[:20]
+                        app.lcd.write_string(app.free_text2)
+                    else:
+                        app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')
+                        app.lcd.write_string(app.free_text2)
         except OSError:
             pass
+
 
 def write_free_text3(app, cfg):
     """Method called to write the Free-Text 3 on the screen
@@ -255,58 +621,152 @@ def write_free_text3(app, cfg):
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                h_line = app.free_text3_line = cfg.get('LCD_I2C', 'lcd_free_text3_line').strip('"')
-                for h_line in (('%s' % app.free_text3_line)):
-                    if (h_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.free_text3_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.free_text3)
-                        elif int('%s' % app.cols) == 20:
-                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')[:20]
-                            app.lcd.write_string('%s' % app.free_text3)
-                        else:
-                            app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3').strip('"')
-                            app.lcd.write_string('%s' % app.free_text3)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "free_text_3" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')
+                        app.lcd.write_string(app.free_text3)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "free_text_3" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')
+                        app.lcd.write_string(app.free_text3)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "free_text_3" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')
+                        app.lcd.write_string(app.free_text3)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "free_text_3" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')
+                        app.lcd.write_string(app.free_text3)
         except OSError:
             pass
-        
+
+
 def write_free_text4(app, cfg):
     """Method called to write the Free-Text 4 on the screen
     """
     if hasattr(app, 'lcd'):
         try:
             if not "":
-                i_line = app.free_text4_line = cfg.get('LCD_I2C', 'lcd_free_text4_line').strip('"')
-                for i_line in (('%s' % app.free_text4_line)):
-                    if (i_line.isnumeric()) == True:
-                        app.lcd.cursor_pos = (int('%s' % app.free_text4_line), 0)
-                        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-                        if int('%s' % app.cols) == 16:
-                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')[:16]
-                            app.lcd.write_string('%s' % app.free_text4)
-                        elif int('%s' % app.cols) == 20:
-                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')[:20]
-                            app.lcd.write_string('%s' % app.free_text4)
-                        else:
-                            app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4').strip('"')
-                            app.lcd.write_string('%s' % app.free_text4)
+                # First Line in screen is (0)
+                app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
+                x = app.line1.split()
+                if "free_text_4" in x:
+                    app.lcd.cursor_pos = (0, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text3)
+                # Second Line in screen is (1)
+                app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
+                x = app.line2.split()
+                if "free_text_4" in x:
+                    app.lcd.cursor_pos = (1, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text3)
+                # Third Line in screen is (2)
+                app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
+                x = app.line3.split()
+                if "free_text_4" in x:
+                    app.lcd.cursor_pos = (2, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text3)
+                # Fourth line in screen is (3)
+                app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+                x = app.line4.split()
+                if "free_text_4" in x:
+                    app.lcd.cursor_pos = (3, 0)
+                    app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+                    if int(app.cols) == 16:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text3)
+                    elif int(app.cols) == 20:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text3)
+                    else:
+                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text3)
         except OSError:
             pass
+
 
 def connect_i2c(app, cfg):
     """I2c connect to lcd"""
     try:
-        app.chip = cfg.get('LCD_I2C', 'lcd_chip').strip('"')
-        app.address = cfg.get('LCD_I2C', 'lcd_port_address').strip('"')
-        app.port = cfg.get('LCD_I2C', 'lcd_port').strip('"')
-        app.charmap = cfg.get('LCD_I2C', 'lcd_charmap').strip('"')
-        app.cols = cfg.get('LCD_I2C', 'lcd_cols').strip('"')
-        app.rows = cfg.get('LCD_I2C', 'lcd_rows').strip('"')
-        app.lcd = CharLCD(i2c_expander='%s' % app.chip, address=int('%s' % app.address, 16),
-                          port=int('%s' % app.port), charmap=('%s' % app.charmap),
-                          cols=int('%s' % app.cols), rows=int('%s' % app.rows),
+        app.chip = cfg.get('LCD_I2C', 'lcd_chip')
+        app.address = cfg.get('LCD_I2C', 'lcd_port_address')
+        app.port = cfg.get('LCD_I2C', 'lcd_port')
+        app.charmap = cfg.get('LCD_I2C', 'lcd_charmap')
+        app.cols = cfg.get('LCD_I2C', 'lcd_cols')
+        app.rows = cfg.get('LCD_I2C', 'lcd_rows')
+        app.lcd = CharLCD(i2c_expander=app.chip, address=int(app.address, 16),
+                          port=int(app.port), charmap=(app.charmap),
+                          cols=int(app.cols), rows=int(app.rows),
                           backlight_enabled=True)
     except OSError:
         pass
