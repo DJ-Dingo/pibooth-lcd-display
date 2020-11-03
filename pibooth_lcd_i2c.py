@@ -7,7 +7,7 @@ import datetime
 import pibooth
 from RPLCD.i2c import CharLCD
 
-__version__ = "1.0.9"
+__version__ = "1.1.0"
 # DJ-Dingo, Kenneth Nicholas Jørgensen
 
 @pibooth.hookimpl
@@ -28,8 +28,8 @@ def pibooth_configure(cfg):
                    # Text
     cfg.add_option('LCD_I2C', 'lcd_taken_photo_text', "Taken Photo", 
                    "Text before taken counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
-    cfg.add_option('LCD_I2C', 'lcd_show_date_time', "(d)/(m) - (H):(M):(S)", 
-                   "You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display \n# Default (d)/(m) - (H):(M):(S).")
+    cfg.add_option('LCD_I2C', 'lcd_show_date_time', "%d/%m - %H:%M:%S", 
+                   "You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display \n# Default %d/%m - %H:%M:%S")
     cfg.add_option('LCD_I2C', 'lcd_printed_text', "Printed", 
                    "Text before printed counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display")
     cfg.add_option('LCD_I2C', 'lcd_forgotten_text', "Forgotten", 
@@ -47,15 +47,15 @@ def pibooth_configure(cfg):
                    "Free Text 4 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display")
                    # Line select options
     cfg.add_option('LCD_I2C', 'lcd_line_1', "Taken_Photo", 
-                   "Choose what to display on line 1\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+                   "Choose what to display on line 1\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_Text_1', 'Free_Text_2', 'Free_Text_3', 'Free_Text_4'")
     cfg.add_option('LCD_I2C', 'lcd_line_2', "Date_Time", 
-                   "Choose what to display on line 2\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+                   "Choose what to display on line 2\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_Text_1', 'Free_Text_2', 'Free_Text_3', 'Free_Text_4'")
     cfg.add_option('LCD_I2C', 'lcd_line_3', " ", 
-                   "Choose what to display on line 3\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+                   "Choose what to display on line 3 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty )))\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_Text_1', 'Free_Text_2', 'Free_Text_3', 'Free_Text_4'")
     cfg.add_option('LCD_I2C', 'lcd_line_4', " ", 
-                   "Choose what to display on line 4\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4'")
+                   "Choose what to display on line 4 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty )))\n# 'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_Text_1', 'Free_Text_2', 'Free_Text_3', 'Free_Text_4'")
 
-#'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text1', 'Free_text2', 'Free_text3', 'Free_text4')
+#'Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_text_1', 'Free_text_2', 'Free_text_3', 'Free_text_4')
 
 def write_date(app, cfg):
     """Method called to write the Date on the screen
@@ -69,32 +69,28 @@ def write_date(app, cfg):
                 if "date_time" in x:
                     app.lcd.cursor_pos = (0, 0)
                     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
-                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
-                    app.lcd.write_string(time.strftime(newdatetime))
+                    app.lcd.write_string(time.strftime(app.show_date_time))
                 # Second Line in screen is (1)
                 app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
                 x = app.line2.split()
                 if "date_time" in x:
                     app.lcd.cursor_pos = (1, 0)
                     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
-                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
-                    app.lcd.write_string(time.strftime(newdatetime))
+                    app.lcd.write_string(time.strftime(app.show_date_time))
                 # Third Line in screen is (2)
                 app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
                 x = app.line3.split()
                 if "date_time" in x:
                     app.lcd.cursor_pos = (2, 0)
                     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
-                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
-                    app.lcd.write_string(time.strftime(newdatetime))
+                    app.lcd.write_string(time.strftime(app.show_date_time))
                 # Fourth line in screen is (3)
                 app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
                 x = app.line4.split()
                 if "date_time" in x:
                     app.lcd.cursor_pos = (3, 0)
                     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
-                    newdatetime = (app.show_date_time).replace("(", "%").replace(')', "")
-                    app.lcd.write_string(time.strftime(newdatetime))
+                    app.lcd.write_string(time.strftime(app.show_date_time))
         except OSError:
             pass
 
@@ -698,14 +694,14 @@ def write_free_text4(app, cfg):
                     app.lcd.cursor_pos = (0, 0)
                     app.cols = cfg.get('LCD_I2C', 'lcd_cols')
                     if int(app.cols) == 16:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text4)
                     elif int(app.cols) == 20:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text4)
                     else:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text4)
                 # Second Line in screen is (1)
                 app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
                 x = app.line2.split()
@@ -713,14 +709,14 @@ def write_free_text4(app, cfg):
                     app.lcd.cursor_pos = (1, 0)
                     app.cols = cfg.get('LCD_I2C', 'lcd_cols')
                     if int(app.cols) == 16:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text4)
                     elif int(app.cols) == 20:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text4)
                     else:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text4)
                 # Third Line in screen is (2)
                 app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
                 x = app.line3.split()
@@ -728,14 +724,14 @@ def write_free_text4(app, cfg):
                     app.lcd.cursor_pos = (2, 0)
                     app.cols = cfg.get('LCD_I2C', 'lcd_cols')
                     if int(app.cols) == 16:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text4)
                     elif int(app.cols) == 20:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text4)
                     else:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text4)
                 # Fourth line in screen is (3)
                 app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
                 x = app.line4.split()
@@ -743,14 +739,14 @@ def write_free_text4(app, cfg):
                     app.lcd.cursor_pos = (3, 0)
                     app.cols = cfg.get('LCD_I2C', 'lcd_cols')
                     if int(app.cols) == 16:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:16]
+                        app.lcd.write_string(app.free_text4)
                     elif int(app.cols) == 20:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')[:20]
+                        app.lcd.write_string(app.free_text4)
                     else:
-                        app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text4')
-                        app.lcd.write_string(app.free_text3)
+                        app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')
+                        app.lcd.write_string(app.free_text4)
         except OSError:
             pass
 
@@ -889,12 +885,17 @@ def state_preview_do(app, cfg):
 
 @pibooth.hookimpl
 def state_preview_validate(app, cfg):
-    # Re-Write the date at preview_do
+    # Re-Write the date at preview_validate
     write_date(app, cfg)
 
 @pibooth.hookimpl
 def state_preview_exit(app, cfg):
-    # Re-Write the date at preview_do
+    # Re-Write the date at preview_exit
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_capture_enter(app, cfg):
+    # Re-Write the date at capture_enter
     write_date(app, cfg)
 
 @pibooth.hookimpl
@@ -903,8 +904,33 @@ def state_capture_do(app, cfg):
     write_date(app, cfg)
 
 @pibooth.hookimpl
+def state_capture_validate(app, cfg):
+    # Re-Write the date at capture_validate
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_capture_exit(app, cfg):
+    # Re-Write the date at capture_exit
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_processing_enter(app, cfg):
+    # Re-Write the date at processing_enter
+    write_date(app, cfg)
+
+@pibooth.hookimpl
 def state_processing_do(app, cfg):
     # Re-Write the date at processing_do
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_processing_validate(app, cfg):
+    # Re-Write the date at processing_validate
+    write_date(app, cfg)
+
+@pibooth.hookimpl
+def state_processing_exit(app, cfg):
+    # Re-Write the date at processing_exit
     write_date(app, cfg)
 
 @pibooth.hookimpl
