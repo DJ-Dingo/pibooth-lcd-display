@@ -5,9 +5,10 @@ Date-Time Format Codes
 ====================
 
 A reference of all the legal format codes: :raw-html:`<br />`
-**Default = %d/%m - %H:%M:%S** (24/12 - 23:59:59) :raw-html:`<br />`
+Default = **%d/%m - %H:%M:%S** (24/12 - 23:59:59) :raw-html:`<br />`
 
 Directive	Description	Example	Try it :raw-html:`<br />`
+
 %a	Weekday, short version - 	    **Wed**	 :raw-html:`<br />`
 %A	Weekday, full version - 	    **Wednesday** :raw-html:`<br />`
 %w	Weekday as a number 0-6, -      **0 is Sunday**	3  :raw-html:`<br />`	
