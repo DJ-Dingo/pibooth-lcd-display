@@ -1,7 +1,7 @@
 .. role:: raw-html(raw)
     :format: html
 ====================
-Data Format Codes
+Date-Time Format Codes
 ====================
 
 A reference of all the legal format codes: :raw-html:`<br />`
