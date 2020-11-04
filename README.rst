@@ -125,10 +125,11 @@ How to setup the LCD in the config.cfg file
 
 Options are available by editing the configuration file which is easily done using the command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   ::   
-        
+
+   ::
+
        $ pibooth --config
-        
+
 How to setup LCD_I2C in config.cfg :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 [LCD_I2C] :raw-html:`<br />`
@@ -159,7 +160,7 @@ lcd_remaining_duplicates_text = **Duplicates** :raw-html:`<br />`
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 See the Date-time format codes here
-https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst
+https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  :raw-html:`<br />`
 # You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
 # Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
 lcd_show_date_time = **%d/%m - %H:%M:%S** :raw-html:`<br />`
@@ -178,7 +179,7 @@ lcd_free_text4 = **Free Text 4** :raw-html:`<br />`
 Select what to display on line 1,2,3,4  :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**'  :raw-html:`<br />`
-'**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
+# '**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
 # Choose what to display on line 1 :raw-html:`<br />`
 lcd_line_1 = **Taken_Photo** :raw-html:`<br />`
 # Choose what to display on line 2 :raw-html:`<br />`
