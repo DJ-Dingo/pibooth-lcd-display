@@ -119,22 +119,26 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
    :align: center
    :alt:  Change Address on I2c
 
+
+How to setup the LCD in the config.cfg file
+-------------------------------------------
+
+Missing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISSING
+
+How to change the Date-Time format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+See the Date-time format codes here
+https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst
+
+
 States description
 ------------------
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/state-sequence-lcd-i2c.png
    :align: center
    :alt:  State sequence
-
-
-How to setup the LCD in the config.cfg file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-MISSING
-
-How to change Date-Time format
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See the Date-time format codes here
-https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst
 
 
 Circuit diagram
