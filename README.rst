@@ -53,6 +53,7 @@ How to Setup comming soon
 Configuration
 -------------
 
+
 Turn I2C on - Raspberry Pi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -124,6 +125,17 @@ States description
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/state-sequence-lcd-i2c.png
    :align: center
    :alt:  State sequence
+
+
+How to setup the LCD in the config.cfg file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISSING
+
+How to change Date-Time format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+See the Date-time format codes here
+https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst
+
 
 Circuit diagram
 ---------------
