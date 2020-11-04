@@ -126,9 +126,14 @@ How to setup the LCD in the config.cfg file
 Config.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Options are available by editing the configuration file which is easily
+done using the command::
+
+    $ pibooth --config
+
 [LCD_I2C] :raw-html:`<br />`
 
-HOW TO SETUP I2C IN CONFIG.CFG :raw-html:`<br />`
+HOW TO SETUP LCD_I2C IN CONFIG.CFG :raw-html:`<br />`
 # Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 :raw-html:`<br />`
 lcd_chip = **PCF8574** :raw-html:`<br />`
 # Change Port Address 0x3F(Default) :raw-html:`<br />`
