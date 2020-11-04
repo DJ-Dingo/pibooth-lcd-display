@@ -214,12 +214,12 @@ def write_remaining_duplicates_count(app):
             pass
 
 
-def write_free_text(app, free_text):
+def write_free_texts(app):
     """Method called to write the Free-Text 4 on the screen
     """
     if hasattr(app, 'lcd'):
         try:
-            if not "":
+            for free_text in app.free_texts:
                 # First Line in screen is (0)
                 if free_text in app.line1.split():
                     app.lcd.cursor_pos = (0, 0)
@@ -263,10 +263,10 @@ def connect_i2c(app, cfg):
     app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
 
     # free text conf part
-    app.free_text1 = cfg.get('LCD_I2C', 'lcd_free_text1')
-    app.free_text2 = cfg.get('LCD_I2C', 'lcd_free_text2')
-    app.free_text3 = cfg.get('LCD_I2C', 'lcd_free_text3')
-    app.free_text4 = cfg.get('LCD_I2C', 'lcd_free_text4')
+    app.free_texts = [cfg.get('LCD_I2C', 'lcd_free_text1'),
+                      cfg.get('LCD_I2C', 'lcd_free_text2'),
+                      cfg.get('LCD_I2C', 'lcd_free_text3'),
+                      cfg.get('LCD_I2C', 'lcd_free_text4')]
 
     # datetime conf part
     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
@@ -300,21 +300,9 @@ def pibooth_startup(app, cfg):
     # startup
     write_date(app, cfg)
     
-    # Write Free-Text 1
+    # Write Free-Texts 
     # startup.
-    write_free_text(app, app.free_text1)
-    
-    # Write Free-Text 2
-    # startup.
-    write_free_text(app, app.free_text2)
-    
-    # Write Free-Text 3
-    # startup.
-    write_free_text(app, app.free_text3)
-    
-    # Write Free-Text 4
-    # startup.
-    write_free_text(app, app.free_text4)
+    write_free_texts(app)
 
 @pibooth.hookimpl
 def state_wait_enter(app, cfg):
@@ -342,21 +330,9 @@ def state_wait_enter(app, cfg):
     # enter in 'wait' state.
     write_date(app, cfg)
     
-    # Write Free-Text 1
+    # Write Free-Texts
     # enter in 'wait' state.
-    write_free_text(app, app.free_text1)
-    
-    # Write Free-Text 2
-    # enter in 'wait' state.
-    write_free_text(app, app.free_text2)
-    
-    # Write Free-Text 3
-    # enter in 'wait' state.
-    write_free_text(app, app.free_text3)
-    
-    # Write Free-Text 4
-    # enter in 'wait' state.
-    write_free_text(app, app.free_text4)
+    write_free_texts(app)
 
 @pibooth.hookimpl
 def state_wait_do(app, cfg):
