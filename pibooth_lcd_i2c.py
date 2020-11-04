@@ -78,7 +78,7 @@ def write_photo_count(app):
             for line_index, line in enumerate(app.lines):
                 if "taken_photo" in line.split():
                     app.lcd.cursor_pos = (line_index, 0)
-                    app.lcd.write_string(app.taken_photo_text[:app.cols])
+                    app.lcd.write_string(app.taken_photo_text[:app.cols-4])
                     app.lcd.cursor_pos = (line_index, app.cols)
                     app.lcd.write_string('%s' % app.count.taken)
         except OSError:
@@ -93,7 +93,7 @@ def write_printed_count(app):
             for line_index, line in enumerate(app.lines):
                 if "printed" in line.split():
                     app.lcd.cursor_pos = (line_index, 0)
-                    app.lcd.write_string(app.printed_text[:app.cols])
+                    app.lcd.write_string(app.printed_text[:app.cols-4])
                     app.lcd.cursor_pos = (line_index, app.cols)
                     app.lcd.write_string('%s' % app.count.printed)
         except OSError:
@@ -108,7 +108,7 @@ def write_forgotten_count(app):
             for line_index, line in enumerate(app.lines):
                 if "forgotten" in line.split():
                     app.lcd.cursor_pos = (line_index, 0)
-                    app.lcd.write_string(app.forgotten_text[:app.cols])
+                    app.lcd.write_string(app.forgotten_text[:app.cols-4])
                     app.lcd.cursor_pos = (line_index, app.cols)
                     app.lcd.write_string('%s' % app.count.forgotten)
         except OSError:
@@ -123,7 +123,7 @@ def write_remaining_duplicates_count(app):
             for line_index, line in enumerate(app.lines):
                 if "remaining_duplicates" in line.split():
                     app.lcd.cursor_pos = (line_index, 0)
-                    app.lcd.write_string(app.remaining_duplicates_text[:app.cols])
+                    app.lcd.write_string(app.remaining_duplicates_text[:app.cols-4])
                     app.lcd.cursor_pos = (line_index, app.cols)
                     app.lcd.write_string('%s' % app.count.remaining_duplicates)
         except OSError:
@@ -139,7 +139,7 @@ def write_free_texts(app):
                 for line_index, line in enumerate(app.lines):
                     if free_text in line.split():
                         app.lcd.cursor_pos = (line_index, 0)
-                        app.lcd.write_string(free_text[:app.cols])
+                        app.lcd.write_string(free_text[:app.cols-4])
         except OSError:
             pass
 
@@ -174,7 +174,11 @@ def connect_i2c(app, cfg):
 
     # datetime conf part
     app.show_date_time = cfg.get('LCD_I2C', 'lcd_show_date_time')
+    # counter text conf part
     app.taken_photo_text = cfg.get('LCD_I2C', 'lcd_taken_photo_text')
+    app.printed_text = cfg.get('LCD_I2C', 'lcd_printed_text')
+    app.forgotten_text = cfg.get('LCD_I2C', 'lcd_forgotten_text')
+    app.remaining_duplicates_text = cfg.get('LCD_I2C', 'lcd_remaining_duplicates_text')
 
 # app.lcd = CharLCD(i2c_expander='PCF8574', address=0x3F, port=1, cols=16, rows=2, auto_linebreak=False, backlight_enabled=False)
 
