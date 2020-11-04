@@ -62,22 +62,10 @@ def write_date(app):
     """
     if hasattr(app, 'lcd'):
         try:
-            # First Line in screen is (0)
-            if "date_time" in app.line1.split():
-                app.lcd.cursor_pos = (0, 0)
-                app.lcd.write_string(time.strftime(app.show_date_time))
-            # Second Line in screen is (1)
-            if "date_time" in app.line2.split():
-                app.lcd.cursor_pos = (1, 0)
-                app.lcd.write_string(time.strftime(app.show_date_time))
-            # Third Line in screen is (2)
-            if "date_time" in app.line3.split():
-                app.lcd.cursor_pos = (2, 0)
-                app.lcd.write_string(time.strftime(app.show_date_time))
-            # Fourth line in screen is (3)
-            if "date_time" in app.line4.split():
-                app.lcd.cursor_pos = (3, 0)
-                app.lcd.write_string(time.strftime(app.show_date_time))
+            for line_index, line in enumerate(app.lines):
+                if "date_time" in line.split():
+                    app.lcd.cursor_pos = (line_index, 0)
+                    app.lcd.write_string(time.strftime(app.show_date_time))
         except OSError:
             pass
 
@@ -87,30 +75,12 @@ def write_photo_count(app):
     """
     if hasattr(app, 'lcd'):
         try:
-            # First Line in screen is (0)
-            if "taken_photo" in app.line1.split():
-                app.lcd.cursor_pos = (0, 0)
-                app.lcd.write_string(app.taken_photo_text)[:app.cols]
-                app.lcd.cursor_pos = (0, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.taken)
-            # Second Line in screen is (1)
-            if "taken_photo" in app.line2.split():
-                app.lcd.cursor_pos = (1, 0)
-                app.lcd.write_string(app.taken_photo_text)[:app.cols]
-                app.lcd.cursor_pos = (1, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.taken)
-            # Third Line in screen is (2)
-            if "taken_photo" in app.line3.split():
-                app.lcd.cursor_pos = (2, 0)
-                app.lcd.write_string(app.taken_photo_text)[:app.cols]
-                app.lcd.cursor_pos = (2, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.taken)
-            # Fourth line in screen is (3)
-            if "taken_photo" in app.line4.split():
-                app.lcd.cursor_pos = (3, 0)
-                app.lcd.write_string(app.taken_photo_text)[:app.cols]
-                app.lcd.cursor_pos = (3, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.taken)
+            for line_index, line in enumerate(app.lines):
+                if "taken_photo" in line.split():
+                    app.lcd.cursor_pos = (line_index, 0)
+                    app.lcd.write_string(app.taken_photo_text)[:app.cols]
+                    app.lcd.cursor_pos = (line_index, app.cols)
+                    app.lcd.write_string(" "'%s' % app.count.taken)
         except OSError:
             pass
 
@@ -120,30 +90,12 @@ def write_printed_count(app):
     """
     if hasattr(app, 'lcd'):
         try:
-            # First Line in screen is (0)
-            if "printed" in app.line1.split():
-                app.lcd.cursor_pos = (0, 0)
-                app.lcd.write_string(app.printed_text[:app.cols])
-                app.lcd.cursor_pos = (0, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.printed)
-            # Second Line in screen is (1)
-            if "printed" in app.line2.split():
-                app.lcd.cursor_pos = (1, 0)
-                app.lcd.write_string(app.printed_text[:app.cols])
-                app.lcd.cursor_pos = (1, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.printed)
-            # Third Line in screen is (2)
-            if "printed" in app.line3.split():
-                app.lcd.cursor_pos = (2, 0)
-                app.lcd.write_string(app.printed_text[:app.cols])
-                app.lcd.cursor_pos = (2, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.printed)
-            # Fourth line in screen is (3)
-            if "printed" in app.line4.split():
-                app.lcd.cursor_pos = (3, 0)
-                app.lcd.write_string(app.printed_text[:app.cols])
-                app.lcd.cursor_pos = (3, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.printed)
+            for line_index, line in enumerate(app.lines):
+                if "printed" in line.split():
+                    app.lcd.cursor_pos = (line_index, 0)
+                    app.lcd.write_string(app.printed_text[:app.cols])
+                    app.lcd.cursor_pos = (line_index, app.cols)
+                    app.lcd.write_string(" "'%s' % app.count.printed)
         except OSError:
             pass
 
@@ -153,30 +105,12 @@ def write_forgotten_count(app):
     """
     if hasattr(app, 'lcd'):
         try:
-            # First Line in screen is (0)
-            if "forgotten" in app.line1.split():
-                app.lcd.cursor_pos = (0, 0)
-                app.lcd.write_string(app.forgotten_text[:app.cols])
-                app.lcd.cursor_pos = (0, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.forgotten)
-            # Second Line in screen is (1)
-            if "forgotten" in app.line2.split():
-                app.lcd.cursor_pos = (1, 0)
-                app.lcd.write_string(app.forgotten_text[:app.cols])
-                app.lcd.cursor_pos = (1, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.forgotten)
-            # Third Line in screen is (3)
-            if "forgotten" in app.line1.split():
-                app.lcd.cursor_pos = (3, 0)
-                app.lcd.write_string(app.forgotten_text[:app.cols])
-                app.lcd.cursor_pos = (3, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.forgotten)
-            # Fourht Line in screen is (3)
-            if "forgotten" in app.line1.split():
-                app.lcd.cursor_pos = (3, 0)
-                app.lcd.write_string(app.forgotten_text[:app.cols])
-                app.lcd.cursor_pos = (3, app.cols)
-                app.lcd.write_string(" "'%s' % app.count.forgotten)
+            for line_index, line in enumerate(app.lines):
+                if "forgotten" in line.split():
+                    app.lcd.cursor_pos = (line_index, 0)
+                    app.lcd.write_string(app.forgotten_text[:app.cols])
+                    app.lcd.cursor_pos = (line_index, app.cols)
+                    app.lcd.write_string(" "'%s' % app.count.forgotten)
         except OSError:
             pass
 
@@ -186,29 +120,11 @@ def write_remaining_duplicates_count(app):
     """
     if hasattr(app, 'lcd'):
         try:
-                # First Line in screen is (0)
-                if "remaining_duplicates" in app.line1.split():
-                    app.lcd.cursor_pos = (0, 0)
+            for line_index, line in enumerate(app.lines):
+                if "remaining_duplicates" in line.split():
+                    app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.remaining_duplicates_text)[:app.cols]
-                    app.lcd.cursor_pos = (0, app.cols)
-                    app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
-                # Second Line in screen is (1)
-                if "remaining_duplicates" in app.line2.split():
-                    app.lcd.cursor_pos = (1, 0)
-                    app.lcd.write_string(app.remaining_duplicates_text)[:app.cols]
-                    app.lcd.cursor_pos = (1, app.cols)
-                    app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
-                # Third Line in screen is (2)
-                if "remaining_duplicates" in app.line3.split():
-                    app.lcd.cursor_pos = (2, 0)
-                    app.lcd.write_string(app.remaining_duplicates_text)[:app.cols]
-                    app.lcd.cursor_pos = (2, app.cols)
-                    app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
-                # Fourth Line in screen is (3)
-                if "remaining_duplicates" in app.line4.split():
-                    app.lcd.cursor_pos = (3, 0)
-                    app.lcd.write_string(app.remaining_duplicates_text)[:app.cols]
-                    app.lcd.cursor_pos = (3, app.cols)
+                    app.lcd.cursor_pos = (line_index, app.cols)
                     app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
         except OSError:
             pass
@@ -220,22 +136,10 @@ def write_free_texts(app):
     if hasattr(app, 'lcd'):
         try:
             for free_text in app.free_texts:
-                # First Line in screen is (0)
-                if free_text in app.line1.split():
-                    app.lcd.cursor_pos = (0, 0)
-                    app.lcd.write_string(app.free_text4[:app.cols])
-                # Second Line in screen is (1)
-                if free_text in app.line2.split():
-                    app.lcd.cursor_pos = (1, 0)
-                    app.lcd.write_string(app.free_text4[:app.cols])
-                # Third Line in screen is (2)
-                if free_text in app.line3.split():
-                    app.lcd.cursor_pos = (2, 0)
-                    app.lcd.write_string(app.free_text4[:app.cols])
-                # Fourth line in screen is (3)
-                if free_text in app.line4.split():
-                    app.lcd.cursor_pos = (3, 0)
-                    app.lcd.write_string(app.free_text4[:app.cols])
+                for line_index, line in enumerate(app.lines):
+                    if free_text in line.split():
+                        app.lcd.cursor_pos = (line_index, 0)
+                        app.lcd.write_string(free_text[:app.cols])
         except OSError:
             pass
 
@@ -257,10 +161,10 @@ def connect_i2c(app, cfg):
         pass
 
     # line conf part
-    app.line1 = cfg.get('LCD_I2C', 'lcd_line_1').lower()
-    app.line2 = cfg.get('LCD_I2C', 'lcd_line_2').lower()
-    app.line3 = cfg.get('LCD_I2C', 'lcd_line_3').lower()
-    app.line4 = cfg.get('LCD_I2C', 'lcd_line_4').lower()
+    app.lines = [cfg.get('LCD_I2C', 'lcd_line_1').lower(),
+                 cfg.get('LCD_I2C', 'lcd_line_2').lower(),
+                 cfg.get('LCD_I2C', 'lcd_line_3').lower(),
+                 cfg.get('LCD_I2C', 'lcd_line_4').lower()]
 
     # free text conf part
     app.free_texts = [cfg.get('LCD_I2C', 'lcd_free_text1'),
