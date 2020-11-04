@@ -123,17 +123,14 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 How to setup the LCD in the config.cfg file
 -------------------------------------------
 
-Config.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Options are available by editing the configuration file which is easily done using the command::
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     $ pibooth --config
 
-[LCD_I2C] :raw-html:`<br />`
-
-HOW TO SETUP LCD_I2C IN CONFIG.CFG :raw-html:`<br />`
+How to setup LCD_I2C in config.cfg :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[LCD_I2C] :raw-html:`<br />`
 # Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 :raw-html:`<br />`
 lcd_chip = **PCF8574** :raw-html:`<br />`
 # Change Port Address 0x3F(Default) :raw-html:`<br />`
@@ -147,8 +144,8 @@ lcd_cols = **16** :raw-html:`<br />`
 # Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD) :raw-html:`<br />`
 lcd_rows = **2** :raw-html:`<br />`
 
-WRITE TEXT SHOWING BEFORE COUNTER :raw-html:`<br />`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Write text showing before the counter :raw-html:`<br />`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Text before taken counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
 lcd_taken_photo_text = **Taken Photo** :raw-html:`<br />`
 # Text before printed counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
@@ -166,8 +163,8 @@ https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.r
 # Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
 lcd_show_date_time = **%d/%m - %H:%M:%S** :raw-html:`<br />`
 
-WRITE FREE TEXT :raw-html:`<br />`
-^^^^^^^^^^^^^^^
+Write your own free text :raw-html:`<br />`
+^^^^^^^^^^^^^^^^^^^^^^^^
 # Free Text 1 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
 lcd_free_text1 = **Free Text 1** :raw-html:`<br />`
 # Free Text 2 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
@@ -177,7 +174,7 @@ lcd_free_text3 = **Free Text 3** :raw-html:`<br />`
 # Free Text 4 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
 lcd_free_text4 = **Free Text 4** :raw-html:`<br />`
 
-SELECT WHAT TO DISPLAY ON LINE 1,2,3,4  :raw-html:`<br />`
+Select what to display on line 1,2,3,4  :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**'  :raw-html:`<br />`
 '**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
