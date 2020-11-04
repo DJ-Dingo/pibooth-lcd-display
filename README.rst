@@ -123,10 +123,10 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 How to setup the LCD in the config.cfg file
 -------------------------------------------
 
-Options are available by editing the configuration file which is easily done using the command::
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Options are available by editing the configuration file which is easily done using the command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    $ pibooth --config
+    :: $ pibooth --config
 
 How to setup LCD_I2C in config.cfg :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
