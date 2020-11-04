@@ -137,7 +137,7 @@ def write_free_texts(app):
         try:
             for free_text in app.free_texts:
                 for line_index, line in enumerate(app.lines):
-                    if free_text in line.split():
+                    if "Free_Text_{0}".format(line_index + 1) in line.split():
                         app.lcd.cursor_pos = (line_index, 0)
                         app.lcd.write_string(free_text[:app.cols])
         except OSError:
