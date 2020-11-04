@@ -4,8 +4,8 @@
 Data Format Codes
 ====================
 
-A reference of all the legal format codes:
-**Default = %d/%m - %H:%M:%S** (24/12 - 23:59:59)
+A reference of all the legal format codes: :raw-html:`<br />`
+**Default = %d/%m - %H:%M:%S** (24/12 - 23:59:59) :raw-html:`<br />`
 
 Directive	Description	Example	Try it :raw-html:`<br />`
 %a	Weekday, short version - 	    **Wed**	 :raw-html:`<br />`
