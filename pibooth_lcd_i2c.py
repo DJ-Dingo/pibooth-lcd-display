@@ -298,7 +298,7 @@ def pibooth_startup(app, cfg):
 
     # Re-Write the date/time at pibooth
     # startup
-    write_date(app, cfg)
+    write_date(app)
     
     # Write Free-Texts 
     # startup.
@@ -328,106 +328,106 @@ def state_wait_enter(app, cfg):
 
     # Re-Write the date at pibooth
     # enter in 'wait' state.
-    write_date(app, cfg)
+    write_date(app)
     
     # Write Free-Texts
     # enter in 'wait' state.
     write_free_texts(app)
 
 @pibooth.hookimpl
-def state_wait_do(app, cfg):
+def state_wait_do(app):
     # Re-Write the date at 'wait' do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_choose_enter(app, cfg):
+def state_choose_enter(app):
     # Re-Write the date at chose do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_choose_do(app, cfg):
+def state_choose_do(app):
     # Re-Write the date at chose do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_chosen_do(app, cfg):
+def state_chosen_do(app):
     # Re-Write the date at chosen do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_preview_enter(app, cfg):
+def state_preview_enter(app):
     # Re-Write the date at preview_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_preview_do(app, cfg):
+def state_preview_do(app):
     # Re-Write the date at preview_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_preview_validate(app, cfg):
+def state_preview_validate(app):
     # Re-Write the date at preview_validate
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_preview_exit(app, cfg):
+def state_preview_exit(app):
     # Re-Write the date at preview_exit
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_capture_enter(app, cfg):
+def state_capture_enter(app):
     # Re-Write the date at capture_enter
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_capture_do(app, cfg):
+def state_capture_do(app):
     # Re-Write the date at capture_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_capture_validate(app, cfg):
+def state_capture_validate(app):
     # Re-Write the date at capture_validate
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_capture_exit(app, cfg):
+def state_capture_exit(app):
     # Re-Write the date at capture_exit
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_processing_enter(app, cfg):
+def state_processing_enter(app):
     # Re-Write the date at processing_enter
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_processing_do(app, cfg):
+def state_processing_do(app):
     # Re-Write the date at processing_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_processing_validate(app, cfg):
+def state_processing_validate(app):
     # Re-Write the date at processing_validate
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_processing_exit(app, cfg):
+def state_processing_exit(app):
     # Re-Write the date at processing_exit
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_print_do(app, cfg):
+def state_print_do(app):
     # Re-Write the date at print_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_finish_do(app, cfg):
+def state_finish_do(app):
     # Re-Write the date at finish_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
-def state_failsafe_do(app, cfg):
+def state_failsafe_do(app):
     # Re-Write the date at failsafe_do
-    write_date(app, cfg)
+    write_date(app)
 
 @pibooth.hookimpl
 def pibooth_cleanup(app):
