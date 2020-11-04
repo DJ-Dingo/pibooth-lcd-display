@@ -125,7 +125,54 @@ How to setup the LCD in the config.cfg file
 
 Missing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-MISSING
+[LCD_I2C]
+HOW TO SETUP I2C IN CONFIG.CFG
+# Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017
+lcd_chip = **PCF8574**
+# Change Port Address 0x3F(Default)
+lcd_port_address = **0x3F**
+# Change the I2C port number 1 or 2 - (Default = 1)
+lcd_port = **1**
+# Change the I2C charmap A00 or A02 or ST0B - (Default = A02)
+lcd_charmap = **A02**
+# Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD)
+lcd_cols = **16**
+# Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD)
+lcd_rows = **2**
+
+WRITE TEXT SHOWING BEFORE COUNTER
+# Text before taken counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display
+lcd_taken_photo_text = **Taken Photo**
+# You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display 
+# Default = **%d/%m - %H:%M:%S**
+lcd_show_date_time = **%d/%m - %H:%M:%S**
+# Text before printed counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display
+lcd_printed_text = **Printed**
+# Text before forgotten counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display
+lcd_forgotten_text = **Forgotten**
+# Text before remaining_duplicates counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display
+lcd_remaining_duplicates_text = **Duplicates**
+
+WRITE FREE TEXT
+# Free Text 1 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display
+lcd_free_text1 = **Free Text 1**
+# Free Text 2 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display
+lcd_free_text2 = **Free Text 2**
+# Free Text 3 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display
+lcd_free_text3 = **Free Text 3**
+# Free Text 4 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display
+lcd_free_text4 = **Free Text 4**
+
+SELECT WHAT TO DISPLAY ON LINE 1,2,3,4 
+# SELECT '**Taken_Photo**', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Free_Text_1', 'Free_Text_2', 'Free_Text_3', 'Free_Text_4'
+# Choose what to display on line 1
+lcd_line_1 = **Taken_Photo**
+# Choose what to display on line 2
+lcd_line_2 = **Date_Time**
+# Choose what to display on line 3 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty )))
+lcd_line_3 = 
+# Choose what to display on line 4 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty )))
+lcd_line_4 = 
 
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
