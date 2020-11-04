@@ -1,8 +1,13 @@
+.. role:: raw-html(raw)
+    :format: html
+====================
 Data Format Codes
+====================
+
 A reference of all the legal format codes:
 
 Directive	Description	Example	Try it
-%a	Weekday, short version	Wed	
+%a	Weekday, short version	**Wed**	
 %A	Weekday, full version	Wednesday	
 %w	Weekday as a number 0-6, 0 is Sunday	3	
 %d	Day of month 01-31	31	
