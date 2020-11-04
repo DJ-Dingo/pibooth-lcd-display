@@ -127,6 +127,7 @@ Config.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [LCD_I2C] :raw-html:`<br />`
+
 HOW TO SETUP I2C IN CONFIG.CFG :raw-html:`<br />`
 # Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 :raw-html:`<br />`
 lcd_chip = **PCF8574** :raw-html:`<br />`
@@ -165,7 +166,8 @@ lcd_free_text3 = **Free Text 3** :raw-html:`<br />`
 lcd_free_text4 = **Free Text 4** :raw-html:`<br />`
 
 SELECT WHAT TO DISPLAY ON LINE 1,2,3,4  :raw-html:`<br />`
-# SELECT '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**', '**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
+# '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**'  :raw-html:`<br />`
+'**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
 # Choose what to display on line 1 :raw-html:`<br />`
 lcd_line_1 = **Taken_Photo** :raw-html:`<br />`
 # Choose what to display on line 2 :raw-html:`<br />`
