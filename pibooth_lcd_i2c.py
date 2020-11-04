@@ -282,19 +282,19 @@ def pibooth_startup(app, cfg):
     
     # Re-write the number of taken photo each time pibooth
     # startup.
-    write_photo_count(app, cfg)
+    write_photo_count(app)
 
     # Re-write the number of printed pictures each time pibooth
     # startup.
-    write_printed_count(app, cfg)
+    write_printed_count(app)
         
     # Re-Write the number of forgotten pictures at pibooth
     # startup
-    write_forgotten_count(app, cfg)
+    write_forgotten_count(app)
 
     # Re-Write the number of remaining_duplicates at pibooth
     # startup
-    write_remaining_duplicates_count(app, cfg)
+    write_remaining_duplicates_count(app)
 
     # Re-Write the date/time at pibooth
     # startup
@@ -312,19 +312,19 @@ def state_wait_enter(app, cfg):
 
     # Re-write the number of taken pictures each time pibooth
     # enter in 'wait' state.
-    write_photo_count(app, cfg)
+    write_photo_count(app)
 
     # Re-write the number of printed pictures each time pibooth
     # enter in 'wait' state.
-    write_printed_count(app, cfg)
+    write_printed_count(app)
         
     # Re-Write the number of forgotten pictures at pibooth
     # enter in 'wait' state.
-    write_forgotten_count(app, cfg)
+    write_forgotten_count(app)
 
     # Re-Write the number of remaining_duplicates at pibooth
     # enter in 'wait' state.
-    write_remaining_duplicates_count(app, cfg)
+    write_remaining_duplicates_count(app)
 
     # Re-Write the date at pibooth
     # enter in 'wait' state.
