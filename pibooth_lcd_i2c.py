@@ -7,7 +7,7 @@ import datetime
 import pibooth
 from RPLCD.i2c import CharLCD
 
-__version__ = "1.1.0"
+__version__ = "1.1.2"
 # DJ-Dingo, Kenneth Nicholas Jørgensen
 
 @pibooth.hookimpl
@@ -80,7 +80,7 @@ def write_photo_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.taken_photo_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string('%s' % app.count.taken)
+                    app.lcd.write_string(" "'%s' % app.count.taken)
         except OSError:
             pass
 
@@ -95,7 +95,7 @@ def write_printed_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.printed_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string('%s' % app.count.printed)
+                    app.lcd.write_string(" "'%s' % app.count.printed)
         except OSError:
             pass
 
@@ -110,7 +110,7 @@ def write_forgotten_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.forgotten_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string('%s' % app.count.forgotten)
+                    app.lcd.write_string(" "'%s' % app.count.forgotten)
         except OSError:
             pass
 
@@ -125,18 +125,18 @@ def write_remaining_duplicates_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.remaining_duplicates_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string('%s' % app.count.remaining_duplicates)
+                    app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
         except OSError:
             pass
 
 
 def write_free_texts(app):
-    """Method called to write the Free-Text 4 on the screen
+    """Method called to write the Free-Texts on the screen
     """
     if hasattr(app, 'lcd'):
         try:
             for line_index, line in enumerate(app.lines):
-                if "Free_Text_{0}".format(line_index + 1) in line.split():
+                if "free_text_{0}".format(line_index + 1) in line.split():
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.free_texts[line_index][:app.cols])
         except OSError:
