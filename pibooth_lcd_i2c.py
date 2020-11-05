@@ -80,7 +80,7 @@ def write_photo_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.taken_photo_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string(" "'%s' % app.count.taken)
+                    app.lcd.write_string(' %s' % app.count.taken)
         except OSError:
             pass
 
@@ -95,7 +95,7 @@ def write_printed_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.printed_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string(" "'%s' % app.count.printed)
+                    app.lcd.write_string(' %s' % app.count.printed)
         except OSError:
             pass
 
@@ -110,7 +110,7 @@ def write_forgotten_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.forgotten_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string(" "'%s' % app.count.forgotten)
+                    app.lcd.write_string(' %s' % app.count.forgotten)
         except OSError:
             pass
 
@@ -125,7 +125,7 @@ def write_remaining_duplicates_count(app):
                     app.lcd.cursor_pos = (line_index, 0)
                     app.lcd.write_string(app.remaining_duplicates_text[:app.cols - 4])
                     app.lcd.cursor_pos = (line_index, app.cols - 4)
-                    app.lcd.write_string(" "'%s' % app.count.remaining_duplicates)
+                    app.lcd.write_string(' %s' % app.count.remaining_duplicates)
         except OSError:
             pass
 
