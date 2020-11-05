@@ -59,7 +59,7 @@ def write_lcd_lines(app, specific_line_type="all"):
     """
     if hasattr(app, 'lcd'):
         try:
-            for row_index in range(app.lcd_rows):
+            for row_index in range(app.rows):
                 line_text, line_type = app.lines[row_index]
                 app.lcd.cursor_pos = (row_index, 0)
                 if line_type == 'Taken_Photo' and specific_line_type in ['all', line_type]:
