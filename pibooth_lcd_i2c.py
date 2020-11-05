@@ -59,23 +59,24 @@ def write_lcd_lines(app, specific_line_type="all"):
     """
     if hasattr(app, 'lcd'):
         try:
-            for line_index, (line_text, line_type) in enumerate(app.lines):
-                app.lcd.cursor_pos = (line_index, 0)
+            for row_index in range(app.lcd_rows):
+                line_text, line_type = app.lines[row_index]
+                app.lcd.cursor_pos = (row_index, 0)
                 if line_type == 'Taken_Photo' and specific_line_type in ['all', line_type]:
                     app.lcd.write_string(line_text[:app.cols - 4])
-                    app.lcd.cursor_pos = (line_index, app.cols - 4)
+                    app.lcd.cursor_pos = (row_index, app.cols - 4)
                     app.lcd.write_string(' %s' % app.count.taken)
                 elif line_type == 'Printed' and specific_line_type in ['all', line_type]:
                     app.lcd.write_string(line_text[:app.cols - 4])
-                    app.lcd.cursor_pos = (line_index, app.cols - 4)
+                    app.lcd.cursor_pos = (row_index, app.cols - 4)
                     app.lcd.write_string(' %s' % app.count.printed)
                 elif line_type == 'Forgotten' and specific_line_type in ['all', line_type]:
                     app.lcd.write_string(line_text[:app.cols - 4])
-                    app.lcd.cursor_pos = (line_index, app.cols - 4)
+                    app.lcd.cursor_pos = (row_index, app.cols - 4)
                     app.lcd.write_string(' %s' % app.count.forgotten)
                 elif line_type == 'Remaining_Duplicates' and specific_line_type in ['all', line_type]:
                     app.lcd.write_string(line_text[:app.cols - 4])
-                    app.lcd.cursor_pos = (line_index, app.cols - 4)
+                    app.lcd.cursor_pos = (row_index, app.cols - 4)
                     app.lcd.write_string(' %s' % app.count.remaining_duplicates)
                 elif line_type == 'Date_Time' and specific_line_type in ['all', line_type]:
                     app.lcd.write_string(time.strftime(line_text))
