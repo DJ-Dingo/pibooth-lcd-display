@@ -59,7 +59,7 @@ def write_lcd_lines(app, specific_line_type="all"):
     """
     if hasattr(app, 'lcd'):
         try:
-            for row_index in range(app.rows):
+            for row_index in range(int(app.rows)):
                 line_text, line_type = app.lines[row_index]
                 app.lcd.cursor_pos = (row_index, 0)
                 if line_type == 'Taken_Photo' and specific_line_type in ['all', line_type]:
@@ -103,10 +103,10 @@ def connect_i2c(app, cfg):
         pass
 
     # line conf part
-    app.lines = [(cfg.get('LCD_I2C', 'lcd_line_1_text'), cfg.get('LCD_I2C', 'lcd_line_1_type')),
-                 (cfg.get('LCD_I2C', 'lcd_line_2_text'), cfg.get('LCD_I2C', 'lcd_line_2_type')),
-                 (cfg.get('LCD_I2C', 'lcd_line_3_text'), cfg.get('LCD_I2C', 'lcd_line_3_type')),
-                 (cfg.get('LCD_I2C', 'lcd_line_4_text'), cfg.get('LCD_I2C', 'lcd_line_4_type'))]
+    app.lines = [(cfg.get('LCD_I2C', 'lcd_line_1_text').strip('"'), cfg.get('LCD_I2C', 'lcd_line_1_type')),
+                 (cfg.get('LCD_I2C', 'lcd_line_2_text').strip('"'), cfg.get('LCD_I2C', 'lcd_line_2_type')),
+                 (cfg.get('LCD_I2C', 'lcd_line_3_text').strip('"'), cfg.get('LCD_I2C', 'lcd_line_3_type')),
+                 (cfg.get('LCD_I2C', 'lcd_line_4_text').strip('"'), cfg.get('LCD_I2C', 'lcd_line_4_type'))]
 
 
 @pibooth.hookimpl
