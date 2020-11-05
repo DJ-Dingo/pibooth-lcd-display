@@ -17,14 +17,14 @@ def pibooth_configure(cfg):
                    "Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017")
     cfg.add_option('LCD_I2C', 'lcd_port_address', "0x3F",
                    "Change Port Address 0x3F(Default)")
-    cfg.add_option('LCD_I2C', 'lcd_port', "1", 
+    cfg.add_option('LCD_I2C', 'lcd_port', "1",
                    "Change the I2C port number 1 or 2 - (Default = 1)")
-    cfg.add_option('LCD_I2C', 'lcd_charmap', "A02", 
+    cfg.add_option('LCD_I2C', 'lcd_charmap', "A02",
                    "Change the I2C charmap A00 or A02 or ST0B - (Default = A02)")
-    cfg.add_option('LCD_I2C', 'lcd_cols', "16", 
+    cfg.add_option('LCD_I2C', 'lcd_cols', "16",
                    "Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD)",
                    "Number of columns per row", ["16", "20"])
-    cfg.add_option('LCD_I2C', 'lcd_rows', "2", 
+    cfg.add_option('LCD_I2C', 'lcd_rows', "2",
                    "Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD)",
                    "Number of rows", ["1", "2", "4"])
 
@@ -114,7 +114,7 @@ def pibooth_startup(app, cfg):
     # Connect the LCD to I2c portexpander
     # startup.
     connect_i2c(app, cfg)
-    
+
     # Write all lines at startup
     write_lcd_lines(app)
 
