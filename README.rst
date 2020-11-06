@@ -140,43 +140,43 @@ lcd_chip = **PCF8574** :raw-html:`<br />`
 lcd_port = **1** :raw-html:`<br />`
 # Change the I2C charmap A00 or A02 or ST0B - (Default = A02) :raw-html:`<br />`
 lcd_charmap = **A02** :raw-html:`<br />`
--------------------------------------------------------------------
-# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+-------------------------------------------------------------------------------------- :raw-html:`<br />`
+# This can also be changed in the pibooth menu under "Lcd_i2c" :raw-html:`<br />`
 # Change Port Address 0x3F(Default) :raw-html:`<br />`
 lcd_port_address = **0x3F** :raw-html:`<br />`
 # Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD) :raw-html:`<br />`
 lcd_cols = **16** :raw-html:`<br />`
 # Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD) :raw-html:`<br />`
 lcd_rows = **2** :raw-html:`<br />`
--------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 Select what to display on line 1,2,3,4  :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
-# '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**', '**Text**'  :raw-html:`<br />`
+# **Taken_Photo** **Printed** **Forgotten** **Remaining_Duplicates** **Date_Time** **Text**  :raw-html:`<br />`
 # Choose what to display on line 1,2,3,4 :raw-html:`<br />`
- - **lcd_line_1_type** **lcd_line_2_type** **lcd_line_3_type** **lcd_line_4_type** = etc. **Taken_Photo** :raw-html:`<br />`
+- **lcd_line_1_type** **lcd_line_2_type** **lcd_line_3_type** **lcd_line_4_type** = etc. **Taken_Photo** :raw-html:`<br />`
 
 Write the text showing before the counter :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Text before etc. **Taken Photo Counter** is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
- - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
- - **lcd_line_1_text** **lcd_line_2_text** **lcd_line_3_text** **lcd_line_4_text** = etc. **Taken Photo**, **Printed**, **Forgotten**, **Duplicates** :raw-html:`<br />`
+- Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
+- **lcd_line_1_text** **lcd_line_2_text** **lcd_line_3_text** **lcd_line_4_text** = etc. **Taken Photo**, **Printed**, **Forgotten**, **Duplicates** :raw-html:`<br />`
 
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 See the Date-Time format codes here :raw-html:`<br />`
 https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  :raw-html:`<br />`
 # You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
- - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
+- Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
 # Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
- - Choose Date_Time and use etc. **%d/%m - %H:%M:%S** to display the date and time:raw-html:`<br />`
+- Choose Date_Time and use etc. **%d/%m - %H:%M:%S** to display the date and time:raw-html:`<br />`
 
 Write your own text on the display :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
 # Text - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
- - Choose Text = **Write your own text** :raw-html:`<br />`
+- Choose Text = **Write your own text** :raw-html:`<br />`
 
 
 States description
