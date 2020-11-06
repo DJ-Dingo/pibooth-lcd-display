@@ -29,30 +29,30 @@ def pibooth_configure(cfg):
                    "Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD)",
                    "Number of rows", ["1", "2", "4"])
 
-    cfg.add_option('LCD_I2C', 'lcd_line_1_text', "Taken Photo",
-                   'Line 1 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
-                   "Line 1 text", "Taken Photo")
     cfg.add_option('LCD_I2C', 'lcd_line_1_type', "Taken_Photo",
                    "Line 1 type",
                    "Line 1 type", ['Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Text'])
-    cfg.add_option('LCD_I2C', 'lcd_line_2_text', "%d/%m - %H:%M:%S",
-                   'Line 2 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
-                   "Line 2 text", "%d/%m - %H:%M:%S")
+    cfg.add_option('LCD_I2C', 'lcd_line_1_text', "Taken Photo",
+                   'Line 1 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
+                   "Line 1 text", "Taken Photo")
     cfg.add_option('LCD_I2C', 'lcd_line_2_type', "Date_Time",
                    "Line 2 type",
                    "Line 2 type", ['Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Text'])
-    cfg.add_option('LCD_I2C', 'lcd_line_3_text', "",
-                   'Line 3 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
-                   "Line 3 text", "")
+    cfg.add_option('LCD_I2C', 'lcd_line_2_text', "%d/%m - %H:%M:%S",
+                   'Line 2 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
+                   "Line 2 text", "%d/%m - %H:%M:%S")
     cfg.add_option('LCD_I2C', 'lcd_line_3_type', "None",
                    "Line 3 type",
                    "Line 3 type", ['Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Text'])
-    cfg.add_option('LCD_I2C', 'lcd_line_4_text', "",
-                   'Line 4 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
-                   "Line 4 text", "")
+    cfg.add_option('LCD_I2C', 'lcd_line_3_text', "",
+                   'Line 3 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
+                   "Line 3 text", "")
     cfg.add_option('LCD_I2C', 'lcd_line_4_type', "None",
                    "Line 4 type - Could be either Taken_Photo, Printed, Forgotten, Remaining_Duplicates, Date_Time, Text",
                    "Line 4 type", ['Taken_Photo', 'Printed', 'Forgotten', 'Remaining_Duplicates', 'Date_Time', 'Text'])
+    cfg.add_option('LCD_I2C', 'lcd_line_4_text', "",
+                   'Line 4 text (put format code e.g. "%d/%m - %H:%M:%S" for time rendering',
+                   "Line 4 text", "")
 
 
 def write_lcd_lines(app, specific_line_type="all"):
