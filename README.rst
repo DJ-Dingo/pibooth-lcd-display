@@ -213,7 +213,7 @@ How to change the Date-Time format
 
 See the Date-Time format codes here 
 
-https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/Date-Time_Format_Codes.rst  
+https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  
 
 # You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c"
 
