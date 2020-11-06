@@ -7,7 +7,7 @@ import datetime
 import pibooth
 from RPLCD.i2c import CharLCD
 
-__version__ = "1.1.3"
+__version__ = "1.0.0"
 # DJ-Dingo, Kenneth Nicholas Jørgensen : werdeil, Vincent Verdeil
 
 @pibooth.hookimpl

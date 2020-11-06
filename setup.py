@@ -45,7 +45,7 @@ def main():
             'pygame',
             'lcd'
         ],
-        py_modules=['pibooth-lcd-i2c'],
+        py_modules=['pibooth_lcd_i2c'],
         install_requires=[
             'pibooth>=2.0.0',
             'RPLCD>=1.3.0'
