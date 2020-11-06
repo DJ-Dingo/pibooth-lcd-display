@@ -17,18 +17,17 @@ It can show numbers of **Photos Taken**, **Printed Photos**, **Forgotten Photos*
 
 It also have 4 x **Free-Text** where you can write your own text, and show **Date/Time**.
 
+Examples:
 
-Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:
+* Show pibooth counters like "Taken Photos 197" or "Today Photos 197"
+* Show some free text in the line "Hello from pibooth!"
+* Show the Date/Time Clock**
+
+.. note:: Maximum text size depends on the LCD type and on the presence of a counter after.
+
+Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**.
 
 * I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT)
-
-
-
-  * Show text like "Taken Photoś 197" (Max 12 letters before photo count) with a 16x2 LCD
-  * Show text like "Today Photos 197" (Max 16 letters before photo count) with a 20x4 LCD
-  * Show a "Free-text" (Max 16 Letters) with a 16x2 LCD
-  * Show a "Free-text" (Max 20 Letters) with a 20x4 LCD
-  * It can show a Date/Time Clock**
 
 **All changes can be made in the pibooth.cfg**
 
