@@ -7,8 +7,8 @@ import datetime
 import pibooth
 from RPLCD.i2c import CharLCD
 
-__version__ = "1.1.2"
-# DJ-Dingo, Kenneth Nicholas Jørgensen
+__version__ = "1.1.3"
+# DJ-Dingo, Kenneth Nicholas Jørgensen : werdeil, Vincent Verdeil
 
 @pibooth.hookimpl
 def pibooth_configure(cfg):
@@ -16,7 +16,8 @@ def pibooth_configure(cfg):
     cfg.add_option('LCD_I2C', 'lcd_chip', "PCF8574",
                    "Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017")
     cfg.add_option('LCD_I2C', 'lcd_port_address', "0x3F",
-                   "Change Port Address 0x3F(Default)")
+                   'Change Port Address 0x3F(Default)',
+                   "Port Expander Address", "0x3F")
     cfg.add_option('LCD_I2C', 'lcd_port', "1",
                    "Change the I2C port number 1 or 2 - (Default = 1)")
     cfg.add_option('LCD_I2C', 'lcd_charmap', "A02",
@@ -90,7 +91,7 @@ def connect_i2c(app, cfg):
     """I2c connect to lcd"""
     try:
         app.chip = cfg.get('LCD_I2C', 'lcd_chip')
-        app.address = cfg.get('LCD_I2C', 'lcd_port_address')
+        app.address = cfg.get('LCD_I2C', 'lcd_port_address').strip('"')
         app.port = cfg.get('LCD_I2C', 'lcd_port')
         app.charmap = cfg.get('LCD_I2C', 'lcd_charmap')
         app.cols = int(cfg.get('LCD_I2C', 'lcd_cols'))
