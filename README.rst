@@ -1,5 +1,3 @@
-.. role:: raw-html(raw)
-    :format: html
 ====================
 pibooth-lcd-i2c
 ====================
@@ -13,19 +11,24 @@ pibooth-lcd-i2c
    :alt: LCD screen
 
 
-Add any 16x2 or 20x4 LCD-screen with a **Hitachi HD44780 controller** using a port expander connected Through I2c.  :raw-html:`<br />`
-It can show numbers of **Photos Taken**, **Printed Photos**, **Forgotten Photos**, **Remaining Duplicates**.  :raw-html:`<br />` 
-It also have 4 x **Free-Text** where you can write your own text, and show **Date/Time**  :raw-html:`<br />` 
+Add any 16x2 or 20x4 LCD-screen with a **Hitachi HD44780 controller** using a port expander connected Through I2c.
 
-Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:`<br />` 
-* I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT) :raw-html:`<br />`
+It can show numbers of **Photos Taken**, **Printed Photos**, **Forgotten Photos**, **Remaining Duplicates**.
 
-  -- Show text like "Taken Photoś 197" (Max 12 letters before photo count) with a 16x2 LCD :raw-html:`<br />`
-  -- Show text like "Today Photos 197" (Max 16 letters before photo count) with a 20x4 LCD :raw-html:`<br />`
-  -- Show a "Free-text" (Max 16 Letters) with a 16x2 LCD :raw-html:`<br />`
-  -- Show a "Free-text" (Max 20 Letters) with a 20x4 LCD :raw-html:`<br />`  
+It also have 4 x **Free-Text** where you can write your own text, and show **Date/Time**.
 
-  **-- It can show a Date/Time Clock**
+
+Supported port expanders are the (**PCF8574** - Default), the **MCP23008** and the **MCP23017**. :raw-html:
+
+* I2c port address (**Default 0x27** on I2c PCF8574T ), (**Default 0x3F** on I2c PCF8574AT)
+
+
+
+  * Show text like "Taken Photoś 197" (Max 12 letters before photo count) with a 16x2 LCD
+  * Show text like "Today Photos 197" (Max 16 letters before photo count) with a 20x4 LCD
+  * Show a "Free-text" (Max 16 Letters) with a 16x2 LCD
+  * Show a "Free-text" (Max 20 Letters) with a 20x4 LCD
+  * It can show a Date/Time Clock**
 
 **All changes can be made in the pibooth.cfg**
 
@@ -39,15 +42,15 @@ Requirements
 Hardware
 ^^^^^^^^
 
-* 1 Raspberry Pi 3 Model B (or higher) :raw-html:`<br />`
-* 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017) :raw-html:`<br />`
-* 1 I2c safe Bi-directional Logic Level Converter :raw-html:`<br />`
+* 1 Raspberry Pi 3 Model B (or higher)
+* 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017)
+* 1 I2c safe Bi-directional Logic Level Converter
 
 Install
 -------
 ::
 
-  How to Setup comming soon
+    $ pip3 install pibooth-lcd-i2c
 
 
 Configuration
@@ -57,15 +60,20 @@ Configuration
 Turn I2C on - Raspberry Pi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The I2C peripheral is not turned on by default.  :raw-html:`<br />` 
+The I2C peripheral is not turned on by default.
+
 There are two methods to adjust the settings. To enable it, do the following.
 
-**Raspberry Pi Configuration via Desktop GUI**  :raw-html:`<br />` 
+**Raspberry Pi Configuration via Desktop GUI**  
+ 
 You can use the Desktop GUI by heading to the Pi Start Menu > Preferences > Raspberry Pi Configuration.
 
-A window will pop up with different tabs to adjust settings. What we are interested is the Interfaces tab. :raw-html:`<br />`
-Click on the tab and select Enable for I2C. Click on the OK button to save.    :raw-html:`<br />`
-We recommend restarting your Pi to ensure that the changes to take effect.  :raw-html:`<br />`
+A window will pop up with different tabs to adjust settings. What we are interested is the Interfaces tab. 
+
+Click on the tab and select Enable for I2C. Click on the OK button to save.    
+
+We recommend restarting your Pi to ensure that the changes to take effect.  
+
 Click on the Pi Start Menu > Preferences > Shutdown. Since we just need to restart, click on the Restart button.
 
 **raspi-config Tool via Terminal**
@@ -82,20 +90,26 @@ I2C is not turned on by default. Again, we can use raspi-config to enable it.
 
 The system will reboot. when it comes back up, log in and enter the following command
 
-``>ls /dev/*i2c*``   :raw-html:`<br />` 
+``>ls /dev/*i2c*``   
+ 
 The Pi should respond with
 
-``/dev/i2c-1``        :raw-html:`<br />` 
+``/dev/i2c-1``        
+ 
 Which represents the user-mode I2C interface.
 
 
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You need to provide the name of the I²C port expander that your board uses.  :raw-html:`<br />` 
-It should be written on the microchip that’s soldered on to your I2c board. :raw-html:`<br />`  
+
+You need to provide the name of the I²C port expander that your board uses.  
+ 
+It should be written on the microchip that’s soldered on to your I2c board. 
+  
 Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP23017**.
 
-The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<br />`
+The board on this photo has a **PCF8574** port expander chip on it. 
+
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-port-expander-name__.png
    :align: center
@@ -103,19 +117,25 @@ The board on this photo has a **PCF8574** port expander chip on it. :raw-html:`<
 
 How to find your I2c addresss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You need to know the address of your I2c. You can find it on the command line using the **"sudo i2cdetect -y 1"** command.  :raw-html:`<br />` 
-In this case the address of the display is **0x3F**.  :raw-html:`<br />`
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/iic-address.png
+You need to know the address of your I2c. You can find it on the command line using the **"sudo i2cdetect -y 1"** command.  
+ 
+In this case the address of the display is **0x3F**.  
+
+
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/iic-address.png
    :align: center
    :alt: I2C Address
 
 How to change address on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can change the address by making a bridge. :raw-html:`<br />`
-Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, **A2** :raw-html:`<br />`
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/I2c-adress.png
+You can change the address by making a bridge. 
+
+Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, **A2** 
+
+
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-adress.png
    :align: center
    :alt:  Change Address on I2c
 
@@ -125,73 +145,111 @@ How to setup the LCD in the config.cfg file
 
 Options are available by editing the configuration file which is easily done using the command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some of theese can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+
+Some of these can also be changed in the pibooth menu under "Lcd_i2c"
+
 ::
 
    $ pibooth --config
    
 
-How to setup LCD_I2C in config.cfg :raw-html:`<br />`
+How to setup LCD_I2C in config.cfg 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[LCD_I2C] :raw-html:`<br />`
-# Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 :raw-html:`<br />`
-lcd_chip = **PCF8574** :raw-html:`<br />`
-# Change the I2C port number 1 or 2 - (Default = 1) :raw-html:`<br />`
-lcd_port = **1** :raw-html:`<br />`
-# Change the I2C charmap A00 or A02 or ST0B - (Default = A02) :raw-html:`<br />`
-lcd_charmap = **A02** :raw-html:`<br />`
--------------------------------------------------------------------------------------- :raw-html:`<br />`
-# This can also be changed in the pibooth menu under "Lcd_i2c" :raw-html:`<br />`
-# Change Port Address 0x3F(Default) :raw-html:`<br />`
-lcd_port_address = **0x3F** :raw-html:`<br />`
-# Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD) :raw-html:`<br />`
-lcd_cols = **16** :raw-html:`<br />`
-# Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD) :raw-html:`<br />`
-lcd_rows = **2** :raw-html:`<br />`
+
+[LCD_I2C] 
+
+# Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 
+
+lcd_chip = **PCF8574** 
+
+# Change the I2C port number 1 or 2 - (Default = 1) 
+
+lcd_port = **1** 
+
+# Change the I2C charmap A00 or A02 or ST0B - (Default = A02) 
+
+lcd_charmap = **A02** 
+
+-------------------------------------------------------------------------------------- 
+
+# This can also be changed in the pibooth menu under "Lcd_i2c" 
+
+# Change Port Address 0x3F(Default) 
+
+lcd_port_address = **0x3F** 
+
+# Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD) 
+
+lcd_cols = **16** 
+
+# Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD) 
+
+lcd_rows = **2** 
+
 --------------------------------------------------------------------------------------
 
-Select what to display on line 1,2,3,4  :raw-html:`<br />`
+Select what to display on line 1,2,3,4  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
-# **Taken_Photo** **Printed** **Forgotten** **Remaining_Duplicates** **Date_Time** **Text**  :raw-html:`<br />`
-# Choose what to display on line 1,2,3,4 :raw-html:`<br />`
-- **lcd_line_1_type** **lcd_line_2_type** **lcd_line_3_type** **lcd_line_4_type** = etc. **Taken_Photo** :raw-html:`<br />`
+# This can also be changed in the pibooth menu under "Lcd_i2c"
 
-Write the text showing before the counter :raw-html:`<br />`
+# **Taken_Photo** **Printed** **Forgotten** **Remaining_Duplicates** **Date_Time** **Text**  
+
+# Choose what to display on line 1,2,3,4 
+
+- **lcd_line_1_type** **lcd_line_2_type** **lcd_line_3_type** **lcd_line_4_type** = etc. **Taken_Photo** 
+
+
+Write the text showing before the counter 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Text before etc. **Taken Photo Counter** is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
-- Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
-- **lcd_line_1_text** **lcd_line_2_text** **lcd_line_3_text** **lcd_line_4_text** = etc. **Taken Photo**, **Printed**, **Forgotten**, **Duplicates** :raw-html:`<br />`
+
+# Text before etc. **Taken Photo Counter** is displayed - This can also be changed in the pibooth menu under "Lcd_i2c"
+
+- Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display 
+
+- **lcd_line_1_text** **lcd_line_2_text** **lcd_line_3_text** **lcd_line_4_text** = etc. **Taken Photo**, **Printed**, **Forgotten**, **Duplicates** 
+
 
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See the Date-Time format codes here :raw-html:`<br />`
-https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  :raw-html:`<br />`
-# You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
-- Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
-# Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
-- Choose Date_Time and use etc. **%d/%m - %H:%M:%S** to display the date and time:raw-html:`<br />`
 
-Write your own text on the display :raw-html:`<br />`
+See the Date-Time format codes here 
+
+https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/Date-Time_Format_Codes.rst  
+
+# You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c"
+
+- Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  
+
+# Default = **%d/%m - %H:%M:%S** 
+
+- Choose Date_Time and use etc. **%d/%m - %H:%M:%S** to display the date and time
+
+
+Write your own text on the display 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
-# Text - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
-- Choose Text = **Write your own text** :raw-html:`<br />`
+
+# This can also be changed in the pibooth menu under "Lcd_i2c"
+
+# Text - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display 
+
+- Choose Text = **Write your own text** 
+
 
 
 States description
 ------------------
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/state-sequence-lcd-i2c.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/state-sequence-lcd-i2c.png
    :align: center
    :alt:  State sequence
 
 
 Circuit diagram
 ---------------
+
 Here is the diagram for hardware connections.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/templates/Pibooth%20LCD-I2c%20Sketch%208_bb.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/Pibooth%20LCD-I2c%20Sketch%208_bb.png
    :align: center
    :alt:  PIR-sensor Electronic sketch
 
@@ -201,7 +259,8 @@ Wiring
 I2C-safe Bi-directional Logic Level Converter 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When using a port expander on your LCD, you will have to use 5v.  :raw-html:`<br />`
+When using a port expander on your LCD, you will have to use 5v.  
+
 Since the Raspberry Pi GPIO only handle 3.3v, it will therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/level_converter.png
@@ -209,16 +268,18 @@ Since the Raspberry Pi GPIO only handle 3.3v, it will therefore be a good idea t
    :alt: 4-channel I2C-safe Bi-directional Logic Level converter
 
 
-How to connect a **Level Converter** to your **Port Expander** and the Raspberry Pi (**BOARD numbering scheme**) :raw-html:`<br />`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  :raw-html:`<br />`
+How to connect a **Level Converter** to your **Port Expander** and the Raspberry Pi (**BOARD numbering scheme**)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  
+
 
 - GND: Pin GND (GND)
 - VCC: Pin HV  (HV)(5v) - Also connect **5v** from the raspberry Pi Pin 2, to **HV** on the Level Converter
 - SDA: Pin HV2 (HV2)
 - SCL: Pin HV1 (HV1)
 
-Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. :raw-html:`<br />`
+Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. 
 
 - GND:  Pin 6 (GND)
 - 3.3v: Pin 1 (LV)
@@ -234,10 +295,10 @@ Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. :raw-html
    :target: https://www.python.org/downloads
    :alt: Python 2.7+/3.6+
 
-.. |PypiPackage| image:: https://badge.fury.io/py/pibooth.svg
-   :target: 
+.. |PypiPackage| image:: https://badge.fury.io/py/pibooth-lcd-i2c.svg
+   :target: https://pypi.org/project/pibooth-lcd-i2c
    :alt: PyPi package
 
-.. |Downloads| image:: https://img.shields.io/pypi/dm/pibooth?color=purple
-   :target: 
+.. |Downloads| image:: https://img.shields.io/pypi/dm/pibooth-lcd-i2c?color=purple
+   :target: https://pypi.org/project/pibooth-lcd-i2c
    :alt: PyPi downloads
