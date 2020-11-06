@@ -211,9 +211,7 @@ Write the text showing before the counter
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See the Date-Time format codes here 
-
-https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  
+See the Date-Time format codes in the following `page <https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst>`_
 
 # You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c"
 
