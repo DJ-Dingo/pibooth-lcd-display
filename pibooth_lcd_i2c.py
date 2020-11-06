@@ -60,7 +60,7 @@ def write_lcd_lines(app, specific_line_type="all"):
     """
     if hasattr(app, 'lcd'):
         try:
-            for row_index in range(int(app.rows)):
+            for row_index in range(app.rows):
                 line_text, line_type = app.lines[row_index]
                 app.lcd.cursor_pos = (row_index, 0)
                 if line_type == 'Taken_Photo' and specific_line_type in ['all', line_type]:
@@ -95,7 +95,7 @@ def connect_i2c(app, cfg):
         app.port = cfg.get('LCD_I2C', 'lcd_port')
         app.charmap = cfg.get('LCD_I2C', 'lcd_charmap')
         app.cols = int(cfg.get('LCD_I2C', 'lcd_cols'))
-        app.rows = cfg.get('LCD_I2C', 'lcd_rows')
+        app.rows = int(cfg.get('LCD_I2C', 'lcd_rows'))
         app.lcd = CharLCD(i2c_expander=app.chip, address=int(app.address, 16),
                           port=int(app.port), charmap=(app.charmap),
                           cols=int(app.cols), rows=int(app.rows),
