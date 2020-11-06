@@ -142,10 +142,10 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 How to setup the LCD in the config.cfg file
 -------------------------------------------
 
-Options are available by editing the configuration file which is easily done using the command
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Options are available by editing the configuration file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some of these can also be changed in the pibooth menu under "Lcd_i2c"
+using the command - (Some options can also be changed in the pibooth menu under "Lcd_i2c")
 
 ::
 
@@ -265,8 +265,8 @@ Since the Raspberry Pi GPIO only handle 3.3v, it will therefore be a good idea t
    :alt: 4-channel I2C-safe Bi-directional Logic Level converter
 
 
-How to connect a **Level Converter** to your **Port Expander** and the Raspberry Pi (**BOARD numbering scheme**)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to connect a **Level Converter** to your **Port Expander** and the Raspberry Pi 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.  
 
@@ -276,7 +276,7 @@ Connect the I2c Port Expander to **HV** (High Level) on the Level Converter.
 - SDA: Pin HV2 (HV2)
 - SCL: Pin HV1 (HV1)
 
-Connect the Raspberry Pi to **LV** (Low Level) on the Level Converter. 
+Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on the Level Converter. 
 
 - GND:  Pin 6 (GND)
 - 3.3v: Pin 1 (LV)
