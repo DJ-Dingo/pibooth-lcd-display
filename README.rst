@@ -125,6 +125,7 @@ How to setup the LCD in the config.cfg file
 
 Options are available by editing the configuration file which is easily done using the command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Some of theese can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
 ::
 
    $ pibooth --config
@@ -135,59 +136,47 @@ How to setup LCD_I2C in config.cfg :raw-html:`<br />`
 [LCD_I2C] :raw-html:`<br />`
 # Choose LCD chip - PCF8574(Default) or MCP23008 or MCP23017 :raw-html:`<br />`
 lcd_chip = **PCF8574** :raw-html:`<br />`
-# Change Port Address 0x3F(Default) :raw-html:`<br />`
-lcd_port_address = **0x3F** :raw-html:`<br />`
 # Change the I2C port number 1 or 2 - (Default = 1) :raw-html:`<br />`
 lcd_port = **1** :raw-html:`<br />`
 # Change the I2C charmap A00 or A02 or ST0B - (Default = A02) :raw-html:`<br />`
 lcd_charmap = **A02** :raw-html:`<br />`
+-------------------------------------------------------------------
+# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+# Change Port Address 0x3F(Default) :raw-html:`<br />`
+lcd_port_address = **0x3F** :raw-html:`<br />`
 # Number of columns per row 16 or 20 (16 = Default on a 16x2 LCD) :raw-html:`<br />`
 lcd_cols = **16** :raw-html:`<br />`
 # Number of display rows 1 or 2 or 4 - (2 = Default on a 16x2 LCD) :raw-html:`<br />`
 lcd_rows = **2** :raw-html:`<br />`
-
-Write text showing before the counter :raw-html:`<br />`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Text before taken counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
-lcd_taken_photo_text = **Taken Photo** :raw-html:`<br />`
-# Text before printed counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
-lcd_printed_text = **Printed** :raw-html:`<br />`
-# Text before forgotten counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
-lcd_forgotten_text = **Forgotten** :raw-html:`<br />`
-# Text before remaining_duplicates counter is displayed - Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
-lcd_remaining_duplicates_text = **Duplicates** :raw-html:`<br />`
-
-How to change the Date-Time format
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See the Date-time format codes here
-https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  :raw-html:`<br />`
-# You can change the way Date-Time is displayed - Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
-# Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
-lcd_show_date_time = **%d/%m - %H:%M:%S** :raw-html:`<br />`
-
-Write your own free text :raw-html:`<br />`
-^^^^^^^^^^^^^^^^^^^^^^^^
-# Free Text 1 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
-lcd_free_text1 = **Free Text 1** :raw-html:`<br />`
-# Free Text 2 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
-lcd_free_text2 = **Free Text 2** :raw-html:`<br />`
-# Free Text 3 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
-lcd_free_text3 = **Free Text 3** :raw-html:`<br />`
-# Free Text 4 - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
-lcd_free_text4 = **Free Text 4** :raw-html:`<br />`
+-------------------------------------------------------------------
 
 Select what to display on line 1,2,3,4  :raw-html:`<br />`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**'  :raw-html:`<br />`
-# '**Free_Text_1**', '**Free_Text_2**', '**Free_Text_3**', '**Free_Text_4**' :raw-html:`<br />`
-# Choose what to display on line 1 :raw-html:`<br />`
-lcd_line_1 = **Taken_Photo** :raw-html:`<br />`
-# Choose what to display on line 2 :raw-html:`<br />`
-lcd_line_2 = **Date_Time** :raw-html:`<br />`
-# Choose what to display on line 3 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty ))) :raw-html:`<br />`
-lcd_line_3 =  :raw-html:`<br />`
-# Choose what to display on line 4 ((( ONLY FOR 20x4 or 16x4 displays, otherwise leave empty ))) :raw-html:`<br />`
-lcd_line_4 =  :raw-html:`<br />`
+# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+# '**Taken_Photo**', '**Printed**', '**Forgotten**', '**Remaining_Duplicates**', '**Date_Time**', '**Text**'  :raw-html:`<br />`
+# Choose what to display on line 1,2,3,4 :raw-html:`<br />`
+- lcd_line_1_type, lcd_line_2_type, lcd_line_3_type, lcd_line_4_type = **Taken_Photo** :raw-html:`<br />`
+
+Write the text showing before the counter :raw-html:`<br />`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Text before taken counter is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+- Max-12 characters on a 16x2 display - Max 16 characters on a 20x4 display :raw-html:`<br />`
+- lcd_line_1_text, lcd_line_2_text, lcd_line_3_text, lcd_line_4_text = etc. **Taken Photo**, **Printed**, **Forgotten**, **Duplicates** :raw-html:`<br />`
+
+How to change the Date-Time format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+See the Date-Time format codes here :raw-html:`<br />`
+https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst  :raw-html:`<br />`
+# You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+- Max-16 character on a 16x2 display - Max 20 character on a 20x4 display  :raw-html:`<br />`
+# Default = **%d/%m - %H:%M:%S** :raw-html:`<br />`
+  Choose Date_Time and use etc. **%d/%m - %H:%M:%S** to display the date and time:raw-html:`<br />`
+
+Write your own text on the display :raw-html:`<br />`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# This can also be changed in the pibooth menu under "Lcd_i2c":raw-html:`<br />`
+# Text - Max-16 characters on a 16x2 display - Max 20 characters on a 20x4 display :raw-html:`<br />`
+- Choose Text = **Write your own text** :raw-html:`<br />`
 
 
 States description
