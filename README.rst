@@ -43,10 +43,10 @@ Hardware
 
 * 1 Raspberry Pi 3 Model B (or higher)
 * 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017)
-*   Or just wire through GPIO. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
+* _ Or just wire through GPIO. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
 * 1 I2c safe Bi-directional Logic Level Converter (Only necessary when you use LCD with I2c)
 * 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO**)
-*   R1: Potentiometer can be substituted with and resistors.
+* _ R1: Potentiometer can be substituted with and resistors.
 
 Install
 -------
