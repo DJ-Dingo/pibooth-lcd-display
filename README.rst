@@ -354,12 +354,14 @@ Here is the diagram for hardware connections.
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
-Wiring - **only when using GPIO**
+Wiring - **only when using GPIO 4bit or 8bit mode**
 -----------------------------
 
 First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BCM numbering scheme)
 
 You can choose between **4bit mode (4 DATA wires "D4,D5,D6,D7")** or **8bit mode (8 DATA wires "D0,D1,D2,D3,D4,D5,D6,D7")**
+
+8bit mode is faster and often more stable than 4bit mode.
 
 If you don’t know how to wire up the LCD to the Raspberry Pi, use the above example.
 
@@ -378,10 +380,10 @@ LCD                      GPIO (BCM scheme)  BOARD numbering scheme
 - 8  (D1) 8bit mode only GPIO20             PIN 38
 - 9  (D2) 8bit mode only GPIO16             PIN 36
 - 10 (D3) 8bit mode only GPIO12             PIN 32
-- 11 (D4)                GPIO25             PIN 22
-- 12 (D5)                GPIO24             PIN 18
-- 13 (D6)                GPIO23             PIN 16
-- 14 (D7)                GPIO18             PIN 12
+- 11 (D4) 4bit and 8bit  GPIO25             PIN 22
+- 12 (D5) 4bit and 8bit  GPIO24             PIN 18
+- 13 (D6) 4bit and 8bit  GPIO23             PIN 16
+- 14 (D7) 4bit and 8bit  GPIO18             PIN 12
 - 15 (A) (LED +)         Middle wire of the R1 potentiometer.
 - 16 (K) (LED -)         (Ground)           PIN 6
 ======================== ================== ======================
