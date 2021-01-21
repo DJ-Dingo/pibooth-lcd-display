@@ -11,7 +11,9 @@ pibooth-lcd-display
    :alt: LCD screen
 
 
-Add any 16x2 or 20x4 LCD-screen with a **Hitachi HD44780 controller** using either a port expander connected through I2c or just wire through GPIO. We recommend using LCD-screen with I2c, as it uses less wire (only 4), is faster and more stable.
+Add any 16x2 or 20x4 LCD-screen with a **Hitachi HD44780 controller** using either a port expander connected through I2c or just wire through GPIO 4 or 8 bit. 
+
+We recommend using LCD-screen with I2c, as it uses less wire (only 4), is faster and more stable.
 
 It can show numbers of **Photos Taken**, **Printed Photos**, **Forgotten Photos**, **Remaining Duplicates**.
 
@@ -45,7 +47,7 @@ Hardware
 * 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017)
 * _ Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
 * 1 I2c safe Bi-directional Logic Level Converter (Only necessary when you use LCD with I2c)
-* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO**)
+* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO 4 or 8 bit mode**)
 * _ R1: Potentiometer can be substituted with and resistors.
 
 Install
@@ -55,8 +57,8 @@ Install
     $ pip3 install pibooth-lcd-display
 
 
-Configuration when using I2c
-----------------------------
+Configuration when using I2c port expander
+------------------------------------------
 
 
 Turn I2C on - Raspberry Pi
@@ -104,7 +106,7 @@ Which represents the user-mode I2C interface.
 How to find the name of your port expander on the I2c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need to provide the name of the I²C port expander that your board uses.  
+You need to provide the name of the I2c port expander that your board uses.  
  
 It should be written on the microchip that’s soldered on to your I2c board. 
   
@@ -301,8 +303,8 @@ States description
    :alt:  State sequence
 
 
-Circuit diagram - **only when using I2c**
--------------------------------------
+Circuit diagram - **only when using I2c port expander**
+---------------------------------------------------
 
 Here is the diagram for hardware connections.
 
@@ -310,8 +312,8 @@ Here is the diagram for hardware connections.
    :align: center
    :alt:  LCD-I2c Electronic sketch
 
-Wiring - **only when using I2c**
-----------------------------
+Wiring - **only when using I2c port expander**
+------------------------------------------
 
 I2C-safe Bi-directional Logic Level Converter 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -348,7 +350,7 @@ Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on t
 Circuit diagram - **only when using GPIO 4bit mode**
 --------------------------------------
 
-Here is the diagram for hardware connections **4bit**.
+Here is the diagram for hardware connections **4bit mode**.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-gpio/blob/master/templates/pibooth_lcd_gpio_sketch_bb.png
    :align: center
@@ -358,7 +360,7 @@ Here is the diagram for hardware connections **4bit**.
 Circuit diagram - **only when using GPIO 8bit mode**
 --------------------------------------
 
-Here is the diagram for hardware connections **8bit**.
+Here is the diagram for hardware connections **8bit mode**.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/pibooth_lcd_gpio8bit_sketch_bb.png
    :align: center
@@ -370,8 +372,7 @@ Wiring - **only when using GPIO 4bit or 8bit mode**
 
 First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BCM numbering scheme)
 
-You can choose between **4bit mode (4 DATA wires "D4,D5,D6,D7")** or **8bit mode (8 DATA wires "D0,D1,D2,D3,D4,D5,D6,D7")**
-
+You can choose between **4bit mode (4 DATA wires "D4,D5,D6,D7")** or **8bit mode (8 DATA wires "D0,D1,D2,D3,D4,D5,D6,D7")** 
 8bit mode is faster and often more stable than 4bit mode.
 
 If you don’t know how to wire up the LCD to the Raspberry Pi, use the above example.
