@@ -348,11 +348,22 @@ Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on t
 Circuit diagram - **only when using GPIO 4bit mode**
 --------------------------------------
 
-Here is the diagram for hardware connections.
+Here is the diagram for hardware connections **4bit**.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-gpio/blob/master/templates/pibooth_lcd_gpio_sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
+
+
+Circuit diagram - **only when using GPIO 8bit mode**
+--------------------------------------
+
+Here is the diagram for hardware connections **8bit**.
+
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/pibooth_lcd_gpio8bit_sketch_bb.png
+   :align: center
+   :alt:  LCD-GPIO-4bit mode Electronic sketch
+
 
 Wiring - **only when using GPIO 4bit or 8bit mode**
 -----------------------------
