@@ -43,7 +43,7 @@ Hardware
 
 * 1 Raspberry Pi 3 Model B (or higher)
 * 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017)
-* _ Or just wire through GPIO. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
+* _ Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
 * 1 I2c safe Bi-directional Logic Level Converter (Only necessary when you use LCD with I2c)
 * 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO**)
 * _ R1: Potentiometer can be substituted with and resistors.
@@ -164,7 +164,7 @@ How to setup "LCD DISPLAY SETUP" in either config.cfg or Pibooth menu
 
 [LCD DISPLAY SETUP]
 
-# Choose I2c(Default) or GPIO setup
+# Choose I2c(Default) or GPIO-4bit or GPIO-8bit setup
 
 lcd_gpio_or_i2c = **I2c**
 
@@ -204,19 +204,35 @@ lcd_pin_rs = **7**
 
 lcd_pin_e = **8**
 
-# GPIO-DATA_PIN_4 - Default 25
+# GPIO-DATA_PIN_0 - Default 21 (8 bit mode only)
+
+lcd_data_pin4 = **21**
+
+# GPIO-DATA_PIN_1 - Default 20 (8 bit mode only)
+
+lcd_data_pin5 = **20**
+
+# GPIO-DATA_PIN_2 - Default 16 (8 bit mode only)
+
+lcd_data_pin6 = **16**
+
+# GPIO-DATA_PIN_3 - Default 12 (8 bit mode only)
+
+lcd_data_pin7 = **12**
+
+# GPIO-DATA_PIN_4 - Default 25 (4+8 bit mode)
 
 lcd_data_pin4 = **25**
 
-# GPIO-DATA_PIN_5 - Default 24
+# GPIO-DATA_PIN_5 - Default 24 (4+8 bit mode)
 
 lcd_data_pin5 = **24**
 
-# GPIO-DATA_PIN_6 - Default 23
+# GPIO-DATA_PIN_6 - Default 23 (4+8 bit mode)
 
 lcd_data_pin6 = **23**
 
-# GPIO-DATA_PIN_7 - Default 18
+# GPIO-DATA_PIN_7 - Default 18 (4+8 bit mode)
 
 lcd_data_pin7 = **18**
 
@@ -329,44 +345,46 @@ Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on t
 
 --------------------------------------------------------------------------------------
 
-Circuit diagram - **only when using GPIO**
+Circuit diagram - **only when using GPIO 4bit mode**
 --------------------------------------
 
 Here is the diagram for hardware connections.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-gpio/blob/master/templates/pibooth_lcd_gpio_sketch_bb.png
    :align: center
-   :alt:  LCD-GPIO Electronic sketch
+   :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 Wiring - **only when using GPIO**
 -----------------------------
 
-First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: **IMPORTANT 4 bit mode only** (BCM numbering scheme)
+First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BCM numbering scheme)
+
+You can choose between **4bit mode (4 DATA wires "D4,D5,D6,D7")** or **8bit mode (8 DATA wires "D0,D1,D2,D3,D4,D5,D6,D7")**
 
 If you don’t know how to wire up the LCD to the Raspberry Pi, use the above example.
 
 Connect PINS from the LCD, to the raspberry Pi.
 
-======================= ================== ======================
-LCD                     GPIO (BCM scheme)  BOARD numbering scheme
-======================= ================== ======================
-- 1  (GND)              (Ground)           PIN 6
-- 2  (VCC/5v)           5v Power           PIN 2
-- 3  (V0)               Middle wire of the R2 potentiometer.
-- 4  (RS)               GPIO7              PIN 26
-- 5  (RW) **Important** (Ground)           PIN 6
-- 6  (EN)               GPIO8              PIN 24
-- 7  NOT USED
-- 8  NOT USED
-- 9  NOT USED
-- 10 NOT USED
-- 11 (D4)               GPIO25             PIN 22
-- 12 (D5)               GPIO24             PIN 18
-- 13 (D6)               GPIO23             PIN 16
-- 14 (D7)               GPIO18             PIN 12
-- 15 (A) (LED +)        Middle wire of the R1 potentiometer.
-- 16 (K) (LED -)        (Ground)           PIN 6
-======================= ================== ======================
+======================== ================== ======================
+LCD                      GPIO (BCM scheme)  BOARD numbering scheme
+======================== ================== ======================
+- 1  (GND)               (Ground)           PIN 6
+- 2  (VCC/5v)            5v Power           PIN 2
+- 3  (V0)                Middle wire of the R2 potentiometer.
+- 4  (RS)                GPIO7              PIN 26
+- 5  (RW) **Important**  (Ground)           PIN 6
+- 6  (EN)                GPIO8              PIN 24
+- 7  (D0) 8bit mode only GPIO21             PIN 40
+- 8  (D1) 8bit mode only GPIO20             PIN 38
+- 9  (D2) 8bit mode only GPIO16             PIN 36
+- 10 (D3) 8bit mode only GPIO12             PIN 32
+- 11 (D4)                GPIO25             PIN 22
+- 12 (D5)                GPIO24             PIN 18
+- 13 (D6)                GPIO23             PIN 16
+- 14 (D7)                GPIO18             PIN 12
+- 15 (A) (LED +)         Middle wire of the R1 potentiometer.
+- 16 (K) (LED -)         (Ground)           PIN 6
+======================== ================== ======================
 
 **NOTE** : 
 
