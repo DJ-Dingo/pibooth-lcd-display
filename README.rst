@@ -142,6 +142,8 @@ Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-adress.png
    :align: center
    :alt:  Change Address on I2c
+   
+If your LCD has a PCF8574T chip from Texas Instruments, its default I2C address is 0x27Hex. If your LCD has a PCF8574AT chip from NXP semiconductors, its default I2C address is 0x3FHex. So your LCD probably has an I2C address 0x27Hex or 0x3FHex.
 
 
 How to setup the LCD
@@ -174,9 +176,9 @@ lcd_gpio_or_i2c = **I2c**
 
 lcd_chip = **PCF8574**
 
-# Change Port Address 0x3F(Default)
+# Change Port Address 0x27(Default)
 
-lcd_port_address = **0x3F**
+lcd_port_address = **0x27**
 
 # Change the I2C port number 1 or 2 - (Default = 1)
 
