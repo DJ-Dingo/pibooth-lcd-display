@@ -44,16 +44,16 @@ Hardware
 ^^^^^^^^
 
 * 1 Raspberry Pi 3 Model B (or higher)
-* 1 LCD-screen **Hitachi HD44780 controller** (PCF8574, or MCP23008 or MCP23017) with an I2c port expander
-* _ Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c port expander as it uses less wire (only 4) and is faster and more stable.
-* 1 I2c safe Bi-directional Logic Level Converter (**Only necessary when you use LCD with I2c**)
-* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
+* 1 LCD-screen **Hitachi HD44780 controller** (PCF8574, or MCP23008 or MCP23017) with an I2c port expander. Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c port expander as it uses less wire (only 4) and is faster and more stable.
+* 1 I2c safe Bi-directional Logic Level Converter (**Only necessary when using LCD with I2c port expander**)
+* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only necessary when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
 
 
-Backlight auto Off, when Pibooth shutsdown - **optional** (**Only when using GPIO 4 or 8 bit mode**)
 
-* 1 NPN transitor (BC547, BC548 or equivalent) Backlight control (**Only when using GPIO 4 or 8 bit mode**)
-* 1 Resistor 27k Ohm for Backlight control (**Only when using GPIO 4 or 8 bit mode**)
+Backlight Off, when Pibooth shutsdown - **optional** (**Only necessary when using GPIO 4 or 8 bit mode**)
+
+* 1 NPN transitor (BC547, BC548 or equivalent) Backlight Off (**Only necessary when using GPIO 4 or 8 bit mode**)
+* 1 Resistor 27k Ohm for Backlight Off (**Only necessary when using GPIO 4 or 8 bit mode**)
 
 
 Install
@@ -380,10 +380,10 @@ Here is the diagram for hardware connections **8bit mode**.
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
-Circuit diagram - **only when using GPIO - Auto Turn off Backlight - 4bit and 8bit mode**
+Circuit diagram - **only when using GPIO - Turn off Backlight on exit - 4bit and 8bit mode**
 -------------------------------------------------------------------------------------
 
-Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown**.
+Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown** optional.
 
 Use an NPN transitor (BC547, BC548 or equivalent) which is activated by an additional GPIO connection. 
 The LCD backlight is treated in exactly the same way as a switch for standard LED.
