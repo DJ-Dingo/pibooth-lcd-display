@@ -49,9 +49,7 @@ Hardware
 * 2 Potentiometers: 10K Ohms. (R1/R2) (**Only necessary when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
 
 
-
-Backlight Off, when Pibooth shutsdown - **optional** (**Only necessary when using GPIO 4 or 8 bit mode**)
-
+*   **optional** Backlight Off, when Pibooth shutsdown - (**Only necessary when using GPIO 4 or 8 bit mode**)
 * 1 NPN transitor (BC547, BC548 or equivalent) Backlight Off (**Only necessary when using GPIO 4 or 8 bit mode**)
 * 1 Resistor 27k Ohm for Backlight Off (**Only necessary when using GPIO 4 or 8 bit mode**)
 
@@ -389,7 +387,7 @@ Use an NPN transitor (BC547, BC548 or equivalent) which is activated by an addit
 The LCD backlight is treated in exactly the same way as a switch for standard LED.
 
 The base (middle wire) of the transistor is wired to an additional GPIO PIN via a 27Kohm resistor.
-It then open and close PIN 16 (GROUND) to the backlight LED in the LCD.
+It then open and close LCD PIN 16 (GROUND) to control the backlight LED in the LCD.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
    :align: center
