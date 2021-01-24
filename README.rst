@@ -50,7 +50,8 @@ Hardware
 * 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
 
 
-Backlight auto Off, when Pibooth shutsdown - **optional**
+Backlight auto Off, when Pibooth shutsdown - **optional** (**Only when using GPIO 4 or 8 bit mode**)
+
 * 1 NPN transitor (BC547, BC548 or equivalent) Backlight control (**Only when using GPIO 4 or 8 bit mode**)
 * 1 Resistor 27k Ohm for Backlight control (**Only when using GPIO 4 or 8 bit mode**)
 
