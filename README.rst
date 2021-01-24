@@ -349,8 +349,8 @@ Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on t
 
 --------------------------------------------------------------------------------------
 
-Circuit diagram - **only when using GPIO 4bit mode**
---------------------------------------
+Circuit diagram - **only when using GPIO - 4bit mode**
+--------------------------------------------------
 
 Here is the diagram for hardware connections **4bit mode**.
 
@@ -359,12 +359,27 @@ Here is the diagram for hardware connections **4bit mode**.
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
-Circuit diagram - **only when using GPIO 8bit mode**
---------------------------------------
+Circuit diagram - **only when using GPIO - 8bit mode**
+--------------------------------------------------
 
 Here is the diagram for hardware connections **8bit mode**.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/pibooth_lcd_gpio8bit_sketch_bb.png
+   :align: center
+   :alt:  LCD-GPIO-4bit mode Electronic sketch
+
+
+Circuit diagram - **only when using GPIO - Turn off Backlight, when Pibooth shutsdown - 4bit and 8bit mode**
+-------------------------------------------------------------------------------------------------------
+
+Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown**.
+NPN transitor (BC547, BC548 or equivalent) which is activated by an additional GPIO connection. 
+The LCD backlight is treated in exactly the same way as a switch standard LED.
+
+The base (middle wire) of the transistor is wired to an additional GPIO pin via a 27Kohm resistor.
+It then open and close PIN 16 (GROUND) to the LED in the LCD backlight.
+
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
@@ -377,7 +392,7 @@ First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BC
 You can choose between **4bit mode (4 DATA wires "D4,D5,D6,D7")** or **8bit mode (8 DATA wires "D0,D1,D2,D3,D4,D5,D6,D7")** 
 8bit mode is faster and often more stable than 4bit mode.
 
-If you don’t know how to wire up the LCD to the Raspberry Pi, use the above example.
+If you don’t know how to wire up the LCD to the Raspberry Pi, use some of the above examples.
 
 Connect PINS from the LCD, to the raspberry Pi.
 
@@ -401,6 +416,7 @@ LCD                      GPIO (BCM scheme)  BOARD numbering scheme
 - 15 (A) (LED +)         Middle wire of the R1 potentiometer.
 - 16 (K) (LED -)         (Ground)           PIN 6
 ======================== ================== ======================
+
 
 **NOTE** : 
 
