@@ -48,9 +48,8 @@ Hardware
 * 1 I2c safe Bi-directional Logic Level Converter (**Only necessary when using LCD with I2c port expander**)
 * 2 Potentiometers: 10K Ohms. (R1/R2) (**Only necessary when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
 
-
-*   **optional** Turn Backlight Off, when Pibooth shutsdown - (**Only necessary when using GPIO 4 or 8 bit mode**)
-* 1 NPN transitor (BC547, BC548 or equivalent) Backlight (**Only necessary when using GPIO 4 or 8 bit mode**)
+*   **optional** Turn Backlight Off, when Pibooth shutsdown - (**Only necessary when using GPIO 4 or 8 bit**)
+* 1 NPN transitor (BC547, BC548 or equivalent) Backlight (**Only necessary when using GPIO 4 or 8 bit**)
 * 1 Resistor 27k Ohm - Backlight (**Only necessary when using GPIO 4 or 8 bit mode**)
 
 
