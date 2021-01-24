@@ -240,6 +240,11 @@ lcd_data_pin6 = **23**
 
 lcd_data_pin7 = **18**
 
+# GPIO-Backlight_PIN - Default None (4+8 bit mode)
+
+lcd_backlight_pin = **None**
+
+
 --------------------------------------------------------------------------------------
 
 How to setup "LCD DISPLAY TEXT" in either config.cfg or Pibooth menu
@@ -305,8 +310,8 @@ States description
    :alt:  State sequence
 
 
-Circuit diagram - **only when using I2c port expander**
----------------------------------------------------
+Circuit diagram - **only when using I2c - port expander**
+-----------------------------------------------------
 
 Here is the diagram for hardware connections.
 
@@ -314,8 +319,8 @@ Here is the diagram for hardware connections.
    :align: center
    :alt:  LCD-I2c Electronic sketch
 
-Wiring - **only when using I2c port expander**
-------------------------------------------
+Wiring - **only when using I2c - port expander**
+--------------------------------------------
 
 I2C-safe Bi-directional Logic Level Converter 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -369,15 +374,16 @@ Here is the diagram for hardware connections **8bit mode**.
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
-Circuit diagram - **only when using GPIO - Turn off Backlight, when Pibooth shutsdown - 4bit and 8bit mode**
--------------------------------------------------------------------------------------------------------
+Circuit diagram - **only when using GPIO - Auto Turn off Backlight - 4bit and 8bit mode**
+-------------------------------------------------------------------------------------
 
 Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown**.
-NPN transitor (BC547, BC548 or equivalent) which is activated by an additional GPIO connection. 
-The LCD backlight is treated in exactly the same way as a switch standard LED.
 
-The base (middle wire) of the transistor is wired to an additional GPIO pin via a 27Kohm resistor.
-It then open and close PIN 16 (GROUND) to the LED in the LCD backlight.
+Use an NPN transitor (BC547, BC548 or equivalent) which is activated by an additional GPIO connection. 
+The LCD backlight is treated in exactly the same way as a switch for standard LED.
+
+The base (middle wire) of the transistor is wired to an additional GPIO PIN via a 27Kohm resistor.
+It then open and close PIN 16 (GROUND) to the backlight LED in the LCD.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
    :align: center
@@ -385,7 +391,7 @@ It then open and close PIN 16 (GROUND) to the LED in the LCD backlight.
 
 
 Wiring - **only when using GPIO 4bit or 8bit mode**
------------------------------
+-----------------------------------------------
 
 First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BCM numbering scheme)
 
