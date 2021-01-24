@@ -44,11 +44,15 @@ Hardware
 ^^^^^^^^
 
 * 1 Raspberry Pi 3 Model B (or higher)
-* 1 LCD-screen **Hitachi HD44780 controller** with I2c (PCF8574, or MCP23008 or MCP23017)
-* _ Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c as it uses less wire (only 4) and is faster and more stable.
-* 1 I2c safe Bi-directional Logic Level Converter (Only necessary when you use LCD with I2c)
-* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO 4 or 8 bit mode**)
-* _ R1: Potentiometer can be substituted with and resistors.
+* 1 LCD-screen **Hitachi HD44780 controller** (PCF8574, or MCP23008 or MCP23017) with an I2c port expander
+* _ Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c port expander as it uses less wire (only 4) and is faster and more stable.
+* 1 I2c safe Bi-directional Logic Level Converter (**Only necessary when you use LCD with I2c**)
+
+* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
+
+* 1 NPN transitor (BC547, BC548 or equivalent) for Backlight control (**Only when using GPIO 4 or 8 bit mode**)
+* 1 Resistor 27k Ohm for Backlight control (**Only when using GPIO 4 or 8 bit mode**)
+
 
 Install
 -------
@@ -61,7 +65,7 @@ Configuration when using I2c port expander
 ------------------------------------------
 
 
-Turn I2C on - Raspberry Pi
+Turn on I2C - Raspberry Pi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The I2C peripheral is not turned on by default.
