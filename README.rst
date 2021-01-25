@@ -46,7 +46,7 @@ Hardware
 * 1 Raspberry Pi 3 Model B (or higher)
 * 1 LCD-screen **Hitachi HD44780 controller** (PCF8574, or MCP23008 or MCP23017) with an I2c port expander. Or just wire through GPIO 4 or 8 bit. We recommend using a LCD-screen with an I2c port expander as it uses less wire (only 4) and is faster and more stable.
 * 1 I2c safe Bi-directional Logic Level Converter (**Only necessary when using LCD with I2c port expander**)
-* 2 Potentiometers: 10K Ohms. (R1/R2) (**Only necessary when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
+* 2 (R1/R2) - Potentiometers: 10K Ohms (**Only necessary when using GPIO 4 or 8 bit mode**) - R1: Potentiometer can be substituted with and resistors.
 
 *   **optional** LCD Backlight Off, when Pibooth shutsdown - (**Only necessary when using GPIO 4 or 8 bit**)
 * 1 Q1 - NPN transitor (BC547, BC548 or equivalent) Backlight (**Only necessary when using GPIO 4 or 8 bit**)
@@ -165,7 +165,7 @@ using the command - (All options can also be changed in the pibooth menu under "
 How to setup "LCD DISPLAY SETUP" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio_and_i2c_into_one_version/templates/lcd-display-setup.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-setup.png
    :align: center
    :alt:  Pibooth menu setup
 
@@ -382,10 +382,10 @@ Circuit diagram - **only when using GPIO - Turn off Backlight on exit - 4bit and
 
 Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown** optional.
 
-Use an NPN transitor (BC547, BC548 or equivalent) which is activated by an additional GPIO connection. 
+Use an (Q1) NPN transitor BC547, BC548 or equivalent, which is activated by an additional GPIO connection. 
 The LCD backlight is treated in exactly the same way as a switch for standard LED.
 
-The base (middle wire) of the transistor is wired to an additional GPIO PIN via a 27Kohm resistor.
+The base (middle wire) of the transistor is wired to an additional GPIO PIN via (R3) 27Kohm resistor.
 It then open and close LCD PIN 16 (GROUND) to control the backlight LED in the LCD.
 
 .. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
