@@ -7,6 +7,7 @@ pibooth-lcd-display
 ``pibooth-lcd-display`` is a plugin for the `pibooth`_ application.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/lcd.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd_20-4.png
    :align: center
    :alt: LCD screen
 
