@@ -253,7 +253,7 @@ lcd_backlight_pin = **None**
 How to setup "LCD DISPLAY TEXT" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio_and_i2c_into_one_version/templates/lcd-display-text.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-text.png
    :align: center
    :alt:  Pibooth menu text
 
