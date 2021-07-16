@@ -7,7 +7,7 @@ pibooth-lcd-display
 ``pibooth-lcd-display`` is a plugin for the `pibooth`_ application.
 
 .. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/lcd.png
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/lcd_20-4.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/lcd_20-4.png
    :align: center
    :alt: LCD screen
 
@@ -166,7 +166,7 @@ using the command - (All options can also be changed in the pibooth menu under "
 How to setup "LCD DISPLAY SETUP" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-setup.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/lcd-display-setup.png
    :align: center
    :alt:  Pibooth menu setup
 
@@ -254,7 +254,7 @@ lcd_backlight_pin = **None**
 How to setup "LCD DISPLAY TEXT" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-text.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/lcd-display-text.png
    :align: center
    :alt:  Pibooth menu text
 
@@ -315,7 +315,7 @@ States description
 
 
 Circuit diagram - **only when using I2c - port expander**
------------------------------------------------------
+---------------------------------------------------------
 
 Here is the diagram for hardware connections.
 
@@ -324,7 +324,7 @@ Here is the diagram for hardware connections.
    :alt:  LCD-I2c Electronic sketch
 
 Wiring - **only when using I2c - port expander**
---------------------------------------------
+------------------------------------------------
 
 I2C-safe Bi-directional Logic Level Converter 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -359,27 +359,27 @@ Connect the Raspberry Pi (**BOARD numbering scheme**) to **LV** (Low Level) on t
 --------------------------------------------------------------------------------------
 
 Circuit diagram - **only when using GPIO - 4bit mode**
---------------------------------------------------
+------------------------------------------------------
 
 Here is the diagram for hardware connections **4bit mode**.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
 Circuit diagram - **only when using GPIO - 8bit mode**
---------------------------------------------------
+------------------------------------------------------
 
 Here is the diagram for hardware connections **8bit mode**.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
 Circuit diagram - **only when using GPIO - Turn off Backlight on exit - 4bit and 8bit mode**
--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 Here is the diagram for hardware connections **If you want to automatic turn off Backlight, when Pibooth shutsdown** optional.
 
@@ -389,13 +389,13 @@ The LCD backlight is treated in exactly the same way as a switch for standard LE
 The base (middle wire) of the transistor is wired to an additional GPIO PIN via (R3) 27Kohm resistor.
 It then open and close LCD PIN 16 (GROUND) to control the backlight LED in the LCD.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
 
 Wiring - **only when using GPIO 4bit or 8bit mode**
------------------------------------------------
+---------------------------------------------------
 
 First, connect the LCD Pins directly to the GPIO header of the Raspberry Pi: (BCM numbering scheme)
 
