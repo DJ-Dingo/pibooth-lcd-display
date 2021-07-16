@@ -6,8 +6,8 @@ pibooth-lcd-display
 
 ``pibooth-lcd-display`` is a plugin for the `pibooth`_ application.
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/lcd.png
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd_20-4.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/lcd.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/lcd_20-4.png
    :align: center
    :alt: LCD screen
 
@@ -119,7 +119,7 @@ Supported port expanders are the **PCF8574**, the **MCP23008** and the **MCP2301
 The board on this photo has a **PCF8574T** port expander chip on it. 
 
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-port-expander-name__.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/I2c-port-expander-name__.png
    :align: center
    :alt: I2C on the back of LCD
 
@@ -131,7 +131,7 @@ You need to know the address of your I2c. You can find it on the command line us
 In this case the address of the display is **0x3F**.  
 
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/iic-address.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/iic-address.png
    :align: center
    :alt: I2C Address
 
@@ -143,7 +143,7 @@ You can change the address by making a bridge.
 Soldering 1 or more wire on the back of the I2c (short circuit) **A0**, **A1**, **A2** 
 
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/I2c-adress.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/I2c-adress.png
    :align: center
    :alt:  Change Address on I2c
    
@@ -166,7 +166,7 @@ using the command - (All options can also be changed in the pibooth menu under "
 How to setup "LCD DISPLAY SETUP" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-setup.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-setup.png
    :align: center
    :alt:  Pibooth menu setup
 
@@ -254,7 +254,7 @@ lcd_backlight_pin = **None**
 How to setup "LCD DISPLAY TEXT" in either config.cfg or Pibooth menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-text.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/lcd-display-text.png
    :align: center
    :alt:  Pibooth menu text
 
@@ -284,7 +284,7 @@ Write the text showing before the counter
 How to change the Date-Time format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See the Date-Time format codes in the following `page <https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/master/Date-Time_Format_Codes.rst>`_
+See the Date-Time format codes in the following `page <https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/Date-Time_Format_Codes.rst>`_
 
 # You can change the way Date-Time is displayed - This can also be changed in the pibooth menu under "LCD DISPLAY TEXT"
 
@@ -309,7 +309,7 @@ Write your own text on the display
 States description
 ------------------
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/state-sequence-lcd-i2c.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/state-sequence-lcd-i2c.png
    :align: center
    :alt:  State sequence
 
@@ -319,7 +319,7 @@ Circuit diagram - **only when using I2c - port expander**
 
 Here is the diagram for hardware connections.
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/Pibooth%20LCD-I2c%20Sketch%208_bb.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/Pibooth%20LCD-I2c%20Sketch%208_bb.png
    :align: center
    :alt:  LCD-I2c Electronic sketch
 
@@ -333,7 +333,7 @@ When using a port expander with I2c on your LCD, you will have to use 5v.
 
 Since the Raspberry Pi GPIO only handle 3.3v, it will therefore be a good idea to use a **I2C-safe Bi-directional Logic Level Converter** so you don't fryed your pi.
 
-.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-i2c/master/templates/level_converter.png
+.. image:: https://raw.githubusercontent.com/DJ-Dingo/pibooth-lcd-display/master/templates/level_converter.png
    :align: center
    :alt: 4-channel I2C-safe Bi-directional Logic Level converter
 
@@ -363,7 +363,7 @@ Circuit diagram - **only when using GPIO - 4bit mode**
 
 Here is the diagram for hardware connections **4bit mode**.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-gpio/blob/master/templates/pibooth_lcd_gpio_sketch_bb.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
@@ -373,7 +373,7 @@ Circuit diagram - **only when using GPIO - 8bit mode**
 
 Here is the diagram for hardware connections **8bit mode**.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/pibooth_lcd_gpio8bit_sketch_bb.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/pibooth_lcd_gpio8bit_sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
@@ -389,7 +389,7 @@ The LCD backlight is treated in exactly the same way as a switch for standard LE
 The base (middle wire) of the transistor is wired to an additional GPIO PIN via (R3) 27Kohm resistor.
 It then open and close LCD PIN 16 (GROUND) to control the backlight LED in the LCD.
 
-.. image:: https://github.com/DJ-Dingo/pibooth-lcd-I2c/blob/combine_gpio4_bit_gpio8_bit_and_i2c_into_one_version/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
+.. image:: https://github.com/DJ-Dingo/pibooth-lcd-display/blob/master/templates/Pibooth_LCD_GPIO_Backlight_auto_off_Sketch_bb.png
    :align: center
    :alt:  LCD-GPIO-4bit mode Electronic sketch
 
@@ -453,10 +453,10 @@ R2: Potentiometers: 10K Ohms. Controls the contrast and brightness of the LCD. U
    :target: https://www.python.org/downloads
    :alt: Python 3.6+
 
-.. |PypiPackage| image:: https://badge.fury.io/py/pibooth-lcd-i2c.svg
-   :target: https://pypi.org/project/pibooth-lcd-i2c
+.. |PypiPackage| image:: https://badge.fury.io/py/pibooth-lcd-display.svg
+   :target: https://pypi.org/project/pibooth-lcd-display
    :alt: PyPi package
 
-.. |Downloads| image:: https://img.shields.io/pypi/dm/pibooth-lcd-i2c?color=purple
-   :target: https://pypi.org/project/pibooth-lcd-i2c
+.. |Downloads| image:: https://img.shields.io/pypi/dm/pibooth-lcd-display?color=purple
+   :target: https://pypi.org/project/pibooth-lcd-display
    :alt: PyPi downloads

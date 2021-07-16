@@ -6,10 +6,10 @@ from io import open
 import os.path as osp
 from setuptools import setup
 
-import pibooth_lcd_i2c as plugin
 
 HERE = osp.abspath(osp.dirname(__file__))
 sys.path.insert(0, HERE)
+import pibooth_lcd_display as plugin   # nopep8 : import shall be done after adding setup to paths
 
 
 def main():
@@ -34,8 +34,8 @@ def main():
             'Topic :: Multimedia :: Graphics :: Capture :: Digital Camera',
         ],
         author="Kenneth Nicholas Jørgensen, Vincent Verdeil",
-        url="https://github.com/DJ-Dingo/pibooth-lcd-I2c",
-        download_url="https://github.com/DJ-Dingo/pibooth-lcd-I2c/archive/{}.tar.gz".format(plugin.__version__),
+        url="https://github.com/DJ-Dingo/pibooth-lcd-display",
+        download_url="https://github.com/DJ-Dingo/pibooth-lcd-display/archive/{}.tar.gz".format(plugin.__version__),
         license='GPLv3',
         platforms=['unix', 'linux'],
         keywords=[
@@ -45,7 +45,8 @@ def main():
             'pygame',
             'lcd'
         ],
-        py_modules=['pibooth_lcd_i2c'],
+        py_modules=['pibooth_lcd_display'],
+        python_requires=">=3.6",
         install_requires=[
             'pibooth>=2.0.0',
             'RPLCD>=1.3.0'
@@ -55,8 +56,8 @@ def main():
             'bdist_wheel':
                 {'universal': True}
         },
-        zip_safe=True,  # Don't install the lib as an .egg zipfile
-        entry_points={'pibooth': ["pibooth_lcd_i2c = pibooth_lcd_i2c"]},
+        zip_safe=False,  # Don't install the lib as an .egg zipfile
+        entry_points={'pibooth': ["pibooth_lcd_display = pibooth_lcd_display"]},
     )
 
 if __name__ == '__main__':
